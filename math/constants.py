@@ -1,0 +1,25 @@
+
+
+import mpmath
+
+
+
+PHI = 5**.5*.5+.5
+PHI_SQUARED = PHI * PHI
+PHI_INV = 1 / PHI
+PHI_SQUARED_INV = 1 / PHI_SQUARED
+PHI_FIB1 = .2 + .2 * PHI_SQUARED
+PHI_FIB2 = .2 + .2 * PHI_SQUARED_INV
+
+# Arbitrary Precision Constants
+AP_PHI = mpmath.mpf(5)**.5*.5+.5
+AP_PHI_SQUARED = AP_PHI * AP_PHI
+AP_PHI_INV = 1 / AP_PHI
+AP_PHI_SQUARED_INV = 1 / AP_PHI_SQUARED
+AP_PHI_FIB1 = .2 + .2 * AP_PHI_SQUARED
+AP_PHI_FIB2 = .2 + .2 * AP_PHI_SQUARED_INV
+
+
+
+
+

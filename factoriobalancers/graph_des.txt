@@ -1,0 +1,3210 @@
+Accuracy: 0.00000
+Error: 3.16059
+Score: -0.31606
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+5:	0:1/3
+
+Open outputs: [3]
+(open outputs depth regression): [0]
+Open inputs: [3]
+(open inputs depth regression): [0]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 3.31622
+Score: -0.33162
+Bottlenecks: []
+Output flow:
+2:	0:3/5
+4:	0:2/5
+
+Open outputs: [3]
+(open outputs depth regression): [1]
+Open inputs: [5]
+(open inputs depth regression): [0]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 4.32187
+Score: -0.43219
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+7:	0:1/7
+
+Open outputs: [3, 5]
+(open outputs depth regression): [0, 1]
+Open inputs: [3, 5]
+(open inputs depth regression): [0, 1]
+Possible cb pairs: [(0, 1)]
+Accuracy: 0.25000
+Error: 0.60801
+Score: 0.18920
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+6:	0:2/9
+9:	0:1/9
+
+Open outputs: [5, 7]
+(open outputs depth regression): [0, 1]
+Open inputs: [3, 7]
+(open inputs depth regression): [0, 2]
+Possible cb pairs: [(0, 2), (1, 2)]
+Accuracy: 0.00000
+Error: 4.54876
+Score: -0.45488
+Bottlenecks: []
+Output flow:
+2:	0:6/11
+4:	0:3/11
+6:	0:2/11
+
+Open outputs: [3, 5]
+(open outputs depth regression): [1, 2]
+Open inputs: [3, 7]
+(open inputs depth regression): [0, 2]
+Possible cb pairs: [(1, 2)]
+Accuracy: 0.00000
+Error: 4.64306
+Score: -0.46431
+Bottlenecks: []
+Output flow:
+2:	0:7/13
+4:	0:4/13
+6:	0:2/13
+
+Open outputs: [3, 5]
+(open outputs depth regression): [1, 2]
+Open inputs: [5, 7]
+(open inputs depth regression): [0, 1]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 5.83722
+Score: -0.58372
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+9:	0:1/15
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [0, 1, 2]
+Open inputs: [3, 5, 7]
+(open inputs depth regression): [0, 1, 2]
+Possible cb pairs: [(0, 1), (0, 2), (1, 2)]
+Accuracy: 0.00000
+Error: 4.80735
+Score: -0.48074
+Bottlenecks: []
+Output flow:
+2:	0:10/17
+4:	0:5/17
+8:	0:2/17
+
+Open outputs: [3, 7]
+(open outputs depth regression): [1, 3]
+Open inputs: [3, 9]
+(open inputs depth regression): [0, 3]
+Possible cb pairs: [(1, 3)]
+Accuracy: 0.00000
+Error: 4.88037
+Score: -0.48804
+Bottlenecks: []
+Output flow:
+2:	0:11/19
+4:	0:6/19
+8:	0:2/19
+
+Open outputs: [3, 7]
+(open outputs depth regression): [1, 3]
+Open inputs: [5, 9]
+(open inputs depth regression): [0, 2]
+Possible cb pairs: [(1, 2)]
+Accuracy: 0.00000
+Error: 5.51356
+Score: -0.55136
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:2/21
+11:	0:1/21
+
+Open outputs: [3, 7, 9]
+(open outputs depth regression): [0, 1, 3]
+Open inputs: [3, 5, 9]
+(open inputs depth regression): [0, 2, 3]
+Possible cb pairs: [(0, 2), (0, 3), (1, 2), (1, 3)]
+Accuracy: 0.00000
+Error: 5.80406
+Score: -0.58041
+Bottlenecks: []
+Output flow:
+2:	0:12/23
+4:	0:6/23
+6:	0:3/23
+8:	0:2/23
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [1, 2, 3]
+Open inputs: [3, 5, 9]
+(open inputs depth regression): [0, 2, 3]
+Possible cb pairs: [(1, 2), (1, 3), (2, 3)]
+Accuracy: 0.00000
+Error: 4.45732
+Score: -0.44573
+Bottlenecks: []
+Output flow:
+2:	0:13/25
+4:	0:13/50
+6:	0:7/50
+8:	0:2/25
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [2, 3, 4]
+Open inputs: [3, 9, 11]
+(open inputs depth regression): [0, 1, 4]
+Possible cb pairs: [(2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 4.79566
+Score: -0.47957
+Bottlenecks: []
+Output flow:
+2:	0:14/27
+4:	0:7/27
+6:	0:4/27
+8:	0:2/27
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [1, 2, 3]
+Open inputs: [3, 7, 9]
+(open inputs depth regression): [0, 1, 3]
+Possible cb pairs: [(1, 3), (2, 3)]
+Accuracy: 0.00000
+Error: 6.00371
+Score: -0.60037
+Bottlenecks: []
+Output flow:
+2:	0:15/29
+4:	0:8/29
+6:	0:4/29
+8:	0:2/29
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [1, 2, 3]
+Open inputs: [5, 7, 9]
+(open inputs depth regression): [0, 1, 2]
+Possible cb pairs: [(1, 2)]
+Accuracy: 0.00000
+Error: 6.94702
+Score: -0.69470
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+11:	0:1/31
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [0, 1, 2, 3]
+Open inputs: [3, 5, 7, 9]
+(open inputs depth regression): [0, 1, 2, 3]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]
+Accuracy: 0.00000
+Error: 5.37048
+Score: -0.53705
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+6:	0:2/11
+8:	0:1/11
+10:	0:2/33
+
+Open outputs: [5, 7, 9]
+(open outputs depth regression): [1, 2, 3]
+Open inputs: [3, 7, 11]
+(open inputs depth regression): [0, 2, 4]
+Possible cb pairs: [(1, 2), (1, 4), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 5.60423
+Score: -0.56042
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:3/35
+10:	0:2/35
+
+Open outputs: [3, 7, 9]
+(open outputs depth regression): [1, 2, 4]
+Open inputs: [3, 5, 11]
+(open inputs depth regression): [0, 3, 4]
+Possible cb pairs: [(1, 3), (1, 4), (2, 3), (2, 4)]
+Accuracy: 0.00000
+Error: 6.23176
+Score: -0.62318
+Bottlenecks: []
+Output flow:
+2:	0:20/37
+4:	0:10/37
+6:	0:5/37
+10:	0:2/37
+
+Open outputs: [3, 5, 9]
+(open outputs depth regression): [1, 3, 4]
+Open inputs: [3, 5, 11]
+(open inputs depth regression): [0, 3, 4]
+Possible cb pairs: [(1, 3), (1, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 5.85137
+Score: -0.58514
+Bottlenecks: []
+Output flow:
+2:	0:20/39
+4:	0:10/39
+6:	0:2/13
+8:	0:1/13
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [2, 3, 4]
+Open inputs: [3, 7, 11]
+(open inputs depth regression): [0, 2, 4]
+Possible cb pairs: [(2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 6.33375
+Score: -0.63337
+Bottlenecks: []
+Output flow:
+2:	0:22/41
+4:	0:11/41
+6:	0:6/41
+10:	0:2/41
+
+Open outputs: [3, 5, 9]
+(open outputs depth regression): [1, 3, 4]
+Open inputs: [3, 7, 11]
+(open inputs depth regression): [0, 2, 4]
+Possible cb pairs: [(1, 2), (1, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 6.38229
+Score: -0.63823
+Bottlenecks: []
+Output flow:
+2:	0:23/43
+4:	0:12/43
+6:	0:6/43
+10:	0:2/43
+
+Open outputs: [3, 5, 9]
+(open outputs depth regression): [1, 3, 4]
+Open inputs: [5, 7, 11]
+(open inputs depth regression): [0, 2, 3]
+Possible cb pairs: [(1, 2), (1, 3)]
+Accuracy: 0.00000
+Error: 3.74272
+Score: -0.37427
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:2/45
+13:	0:1/45
+
+Open outputs: [3, 5, 9, 11]
+(open outputs depth regression): [0, 1, 3, 4]
+Open inputs: [3, 5, 7, 11]
+(open inputs depth regression): [0, 2, 3, 4]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.39598
+Score: -0.73960
+Bottlenecks: []
+Output flow:
+2:	0:24/47
+4:	0:12/47
+6:	0:6/47
+8:	0:3/47
+10:	0:2/47
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [1, 2, 3, 4]
+Open inputs: [3, 5, 7, 11]
+(open inputs depth regression): [0, 2, 3, 4]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 5.89416
+Score: -0.58942
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:4/49
+10:	0:2/49
+13:	0:1/49
+
+Open outputs: [3, 7, 9, 11]
+(open outputs depth regression): [0, 1, 2, 4]
+Open inputs: [3, 5, 9, 11]
+(open inputs depth regression): [0, 1, 3, 4]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (1, 3), (1, 4), (2, 3), (2, 4)]
+Accuracy: 0.00000
+Error: 6.45145
+Score: -0.64515
+Bottlenecks: []
+Output flow:
+2:	0:26/51
+4:	0:14/51
+6:	0:7/51
+8:	0:4/51
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [2, 3, 4]
+Open inputs: [5, 9, 11]
+(open inputs depth regression): [0, 1, 3]
+Possible cb pairs: [(2, 3)]
+Accuracy: 0.00000
+Error: 6.60487
+Score: -0.66049
+Bottlenecks: []
+Output flow:
+2:	0:27/53
+4:	0:14/53
+6:	0:8/53
+8:	0:4/53
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [2, 3, 4]
+Open inputs: [7, 9, 11]
+(open inputs depth regression): [0, 1, 2]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 4.60479
+Score: -0.46048
+Bottlenecks: []
+Output flow:
+2:	0:28/55
+4:	0:14/55
+6:	0:7/55
+8:	0:4/55
+10:	0:2/55
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [1, 2, 3, 4]
+Open inputs: [3, 5, 9, 11]
+(open inputs depth regression): [0, 1, 3, 4]
+Possible cb pairs: [(1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.58410
+Score: -0.75841
+Bottlenecks: []
+Output flow:
+2:	0:29/57
+4:	0:29/114
+6:	0:5/38
+8:	0:4/57
+10:	0:2/57
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [3, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 5]
+Possible cb pairs: [(2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.66994
+Score: -0.76699
+Bottlenecks: []
+Output flow:
+2:	0:30/59
+4:	0:15/59
+6:	0:8/59
+8:	0:4/59
+10:	0:2/59
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [1, 2, 3, 4]
+Open inputs: [3, 7, 9, 11]
+(open inputs depth regression): [0, 1, 2, 4]
+Possible cb pairs: [(1, 2), (1, 4), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.71191
+Score: -0.77119
+Bottlenecks: []
+Output flow:
+2:	0:31/61
+4:	0:16/61
+6:	0:8/61
+8:	0:4/61
+10:	0:2/61
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [1, 2, 3, 4]
+Open inputs: [5, 7, 9, 11]
+(open inputs depth regression): [0, 1, 2, 3]
+Possible cb pairs: [(1, 2), (1, 3), (2, 3)]
+Accuracy: 0.00000
+Error: 6.04642
+Score: -0.60464
+Bottlenecks: []
+Output flow:
+2:	0:32/63
+4:	0:16/63
+6:	0:8/63
+8:	0:4/63
+10:	0:2/63
+13:	0:1/63
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [0, 1, 2, 3, 4]
+Open inputs: [3, 5, 7, 9, 11]
+(open inputs depth regression): [0, 1, 2, 3, 4]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 6.44726
+Score: -0.64473
+Bottlenecks: []
+Output flow:
+2:	0:38/65
+4:	0:19/65
+8:	0:6/65
+12:	0:2/65
+
+Open outputs: [3, 7, 11]
+(open outputs depth regression): [1, 3, 5]
+Open inputs: [3, 9, 13]
+(open inputs depth regression): [0, 2, 5]
+Possible cb pairs: [(1, 2), (1, 5), (3, 5)]
+Accuracy: 0.00000
+Error: 6.87352
+Score: -0.68735
+Bottlenecks: []
+Output flow:
+2:	0:36/67
+4:	0:18/67
+6:	0:10/67
+10:	0:3/67
+
+Open outputs: [3, 5, 9]
+(open outputs depth regression): [2, 4, 5]
+Open inputs: [3, 7, 13]
+(open inputs depth regression): [0, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 6.63279
+Score: -0.66328
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+6:	0:4/23
+8:	0:2/23
+10:	0:1/23
+12:	0:2/69
+
+Open outputs: [5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4]
+Open inputs: [3, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (2, 3), (2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.90905
+Score: -0.79090
+Bottlenecks: []
+Output flow:
+2:	0:36/71
+4:	0:18/71
+6:	0:9/71
+8:	0:6/71
+12:	0:2/71
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [3, 5, 9, 13]
+(open inputs depth regression): [0, 2, 4, 5]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.94621
+Score: -0.79462
+Bottlenecks: []
+Output flow:
+2:	0:40/73
+4:	0:20/73
+6:	0:10/73
+12:	0:2/73
+15:	0:1/73
+
+Open outputs: [3, 5, 11, 13]
+(open outputs depth regression): [0, 1, 4, 5]
+Open inputs: [3, 5, 11, 13]
+(open inputs depth regression): [0, 1, 4, 5]
+Possible cb pairs: [(0, 1), (0, 4), (0, 5), (1, 4), (1, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 3.31582
+Score: -0.33158
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:1/25
+12:	0:2/75
+
+Open outputs: [3, 5, 9, 11]
+(open outputs depth regression): [1, 2, 4, 5]
+Open inputs: [3, 5, 7, 13]
+(open inputs depth regression): [0, 3, 4, 5]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.40643
+Score: -0.74064
+Bottlenecks: []
+Output flow:
+2:	0:40/77
+4:	0:20/77
+6:	0:10/77
+8:	0:5/77
+12:	0:2/77
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [3, 5, 7, 13]
+(open inputs depth regression): [0, 3, 4, 5]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.05377
+Score: -0.80538
+Bottlenecks: []
+Output flow:
+2:	0:40/79
+4:	0:20/79
+6:	0:10/79
+8:	0:6/79
+10:	0:3/79
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [3, 5, 9, 13]
+(open inputs depth regression): [0, 2, 4, 5]
+Possible cb pairs: [(2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 5.56123
+Score: -0.55612
+Bottlenecks: []
+Output flow:
+2:	0:14/27
+4:	0:8/27
+6:	0:4/27
+12:	0:2/81
+15:	0:1/81
+
+Open outputs: [3, 5, 11, 13]
+(open outputs depth regression): [0, 1, 4, 5]
+Open inputs: [5, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 4]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (1, 2), (1, 3), (1, 4)]
+Accuracy: 0.00000
+Error: 8.12247
+Score: -0.81225
+Bottlenecks: []
+Output flow:
+2:	0:42/83
+4:	0:21/83
+6:	0:12/83
+8:	0:6/83
+12:	0:2/83
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [3, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 5.02360
+Score: -0.50236
+Bottlenecks: []
+Output flow:
+2:	0:44/85
+4:	0:22/85
+6:	0:11/85
+8:	0:6/85
+12:	0:2/85
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [3, 5, 9, 13]
+(open inputs depth regression): [0, 2, 4, 5]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.25676
+Score: -0.72568
+Bottlenecks: []
+Output flow:
+2:	0:44/87
+4:	0:22/87
+6:	0:4/29
+8:	0:2/29
+10:	0:1/29
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [3, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.22145
+Score: -0.82214
+Bottlenecks: []
+Output flow:
+2:	0:46/89
+4:	0:23/89
+6:	0:12/89
+8:	0:6/89
+12:	0:2/89
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [3, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.50332
+Score: -0.75033
+Bottlenecks: []
+Output flow:
+2:	0:47/91
+4:	0:24/91
+6:	0:12/91
+8:	0:6/91
+12:	0:2/91
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [1, 3, 4, 5]
+Open inputs: [5, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 4]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.97541
+Score: -0.79754
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:2/93
+15:	0:1/93
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [0, 1, 3, 4, 5]
+Open inputs: [3, 5, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 4, 5]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.97931
+Score: -0.89793
+Bottlenecks: []
+Output flow:
+2:	0:48/95
+4:	0:24/95
+6:	0:12/95
+8:	0:6/95
+10:	0:3/95
+12:	0:2/95
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [3, 5, 7, 9, 13]
+(open inputs depth regression): [0, 2, 3, 4, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.34665
+Score: -0.83467
+Bottlenecks: []
+Output flow:
+2:	0:52/97
+4:	0:26/97
+6:	0:13/97
+10:	0:4/97
+12:	0:2/97
+
+Open outputs: [3, 5, 9, 11]
+(open outputs depth regression): [1, 2, 4, 5]
+Open inputs: [3, 5, 11, 13]
+(open inputs depth regression): [0, 1, 4, 5]
+Possible cb pairs: [(1, 4), (1, 5), (2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 6.28374
+Score: -0.62837
+Bottlenecks: []
+Output flow:
+2:	0:50/99
+4:	0:26/99
+6:	0:5/33
+8:	0:8/99
+
+Open outputs: [3, 5, 7]
+(open outputs depth regression): [3, 4, 5]
+Open inputs: [9, 11, 13]
+(open inputs depth regression): [0, 1, 2]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 8.40665
+Score: -0.84066
+Bottlenecks: []
+Output flow:
+2:	0:54/101
+4:	0:27/101
+6:	0:14/101
+10:	0:4/101
+12:	0:2/101
+
+Open outputs: [3, 5, 9, 11]
+(open outputs depth regression): [1, 2, 4, 5]
+Open inputs: [3, 7, 11, 13]
+(open inputs depth regression): [0, 1, 3, 5]
+Possible cb pairs: [(1, 3), (1, 5), (2, 3), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.43604
+Score: -0.84360
+Bottlenecks: []
+Output flow:
+2:	0:55/103
+4:	0:28/103
+6:	0:14/103
+10:	0:4/103
+12:	0:2/103
+
+Open outputs: [3, 5, 9, 11]
+(open outputs depth regression): [1, 2, 4, 5]
+Open inputs: [5, 7, 11, 13]
+(open inputs depth regression): [0, 1, 3, 4]
+Possible cb pairs: [(1, 3), (1, 4), (2, 3), (2, 4)]
+Accuracy: 0.00000
+Error: 6.61074
+Score: -0.66107
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:4/105
+12:	0:2/105
+15:	0:1/105
+
+Open outputs: [3, 5, 9, 11, 13]
+(open outputs depth regression): [0, 1, 2, 4, 5]
+Open inputs: [3, 5, 7, 11, 13]
+(open inputs depth regression): [0, 1, 3, 4, 5]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (0, 5), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.49369
+Score: -0.84937
+Bottlenecks: []
+Output flow:
+2:	0:54/107
+4:	0:28/107
+6:	0:14/107
+8:	0:7/107
+10:	0:4/107
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [5, 7, 11, 13]
+(open inputs depth regression): [0, 1, 3, 4]
+Possible cb pairs: [(2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 8.52196
+Score: -0.85220
+Bottlenecks: []
+Output flow:
+2:	0:55/109
+4:	0:28/109
+6:	0:14/109
+8:	0:8/109
+10:	0:4/109
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [5, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 4]
+Possible cb pairs: [(2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.48814
+Score: -0.74881
+Bottlenecks: []
+Output flow:
+2:	0:56/111
+4:	0:28/111
+6:	0:14/111
+8:	0:7/111
+10:	0:4/111
+12:	0:2/111
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [3, 5, 7, 11, 13]
+(open inputs depth regression): [0, 1, 3, 4, 5]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.57747
+Score: -0.85775
+Bottlenecks: []
+Output flow:
+2:	0:68/113
+4:	0:34/113
+10:	0:6/113
+12:	0:3/113
+14:	0:2/113
+
+Open outputs: [3, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 6]
+Open inputs: [3, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 6), (2, 3), (2, 6), (3, 6)]
+Accuracy: 0.00000
+Error: 5.90937
+Score: -0.59094
+Bottlenecks: []
+Output flow:
+2:	0:58/115
+4:	0:6/23
+6:	0:3/23
+8:	0:8/115
+10:	0:4/115
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [5, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 4]
+Possible cb pairs: [(2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 7.29278
+Score: -0.72928
+Bottlenecks: []
+Output flow:
+2:	0:59/117
+4:	0:10/39
+6:	0:16/117
+8:	0:8/117
+10:	0:4/117
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [2, 3, 4, 5]
+Open inputs: [7, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 3]
+Possible cb pairs: [(2, 3)]
+Accuracy: 0.00000
+Error: 9.03723
+Score: -0.90372
+Bottlenecks: []
+Output flow:
+2:	0:60/119
+4:	0:30/119
+6:	0:15/119
+8:	0:8/119
+10:	0:4/119
+12:	0:2/119
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [3, 5, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 4, 5]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.27435
+Score: -0.72744
+Bottlenecks: []
+Output flow:
+2:	0:61/121
+4:	0:61/242
+6:	0:31/242
+8:	0:8/121
+10:	0:4/121
+12:	0:2/121
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 6]
+Possible cb pairs: [(2, 3), (2, 6), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 7.61540
+Score: -0.76154
+Bottlenecks: []
+Output flow:
+2:	0:62/123
+4:	0:31/123
+6:	0:16/123
+8:	0:8/123
+10:	0:4/123
+12:	0:2/123
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [3, 7, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 3, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (2, 3), (2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.16093
+Score: -0.71609
+Bottlenecks: []
+Output flow:
+2:	0:63/125
+4:	0:32/125
+6:	0:16/125
+8:	0:8/125
+10:	0:4/125
+12:	0:2/125
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [5, 7, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 3, 4]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 10.50452
+Score: -1.05045
+Bottlenecks: []
+Output flow:
+2:	0:64/127
+4:	0:32/127
+6:	0:16/127
+8:	0:8/127
+10:	0:4/127
+12:	0:2/127
+15:	0:1/127
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [0, 1, 2, 3, 4, 5]
+Open inputs: [3, 5, 7, 9, 11, 13]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.64997
+Score: -0.76500
+Bottlenecks: []
+Output flow:
+2:	0:22/43
+4:	0:11/43
+6:	0:22/129
+10:	0:2/43
+14:	0:2/129
+
+Open outputs: [3, 5, 9, 13]
+(open outputs depth regression): [1, 3, 5, 6]
+Open inputs: [3, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 6), (3, 4), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.81192
+Score: -0.88119
+Bottlenecks: []
+Output flow:
+2:	0:68/131
+4:	0:34/131
+6:	0:17/131
+8:	0:10/131
+14:	0:2/131
+
+Open outputs: [3, 5, 7, 13]
+(open outputs depth regression): [1, 4, 5, 6]
+Open inputs: [3, 5, 9, 15]
+(open inputs depth regression): [0, 3, 5, 6]
+Possible cb pairs: [(1, 3), (1, 5), (1, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 7.03565
+Score: -0.70356
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:11/133
+10:	0:6/133
+14:	0:2/133
+
+Open outputs: [3, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 6]
+Open inputs: [3, 5, 11, 15]
+(open inputs depth regression): [0, 2, 5, 6]
+Possible cb pairs: [(1, 2), (1, 5), (1, 6), (3, 5), (3, 6), (4, 5), (4, 6)]
+Accuracy: 0.00000
+Error: 5.81292
+Score: -0.58129
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:2/45
+14:	0:2/135
+17:	0:1/135
+
+Open outputs: [3, 5, 9, 13, 15]
+(open outputs depth regression): [0, 1, 3, 5, 6]
+Open inputs: [3, 5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5, 6]
+Possible cb pairs: [(0, 2), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.88515
+Score: -0.88851
+Bottlenecks: []
+Output flow:
+2:	0:70/137
+4:	0:35/137
+6:	0:20/137
+8:	0:10/137
+14:	0:2/137
+
+Open outputs: [3, 5, 7, 13]
+(open outputs depth regression): [1, 4, 5, 6]
+Open inputs: [3, 7, 9, 15]
+(open inputs depth regression): [0, 3, 4, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.90906
+Score: -0.89091
+Bottlenecks: []
+Output flow:
+2:	0:72/139
+4:	0:36/139
+6:	0:18/139
+8:	0:10/139
+12:	0:3/139
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [3, 5, 9, 15]
+(open inputs depth regression): [0, 3, 5, 6]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 7.97212
+Score: -0.79721
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+6:	0:8/47
+8:	0:4/47
+10:	0:2/47
+12:	0:1/47
+14:	0:2/141
+
+Open outputs: [5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5]
+Open inputs: [3, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (2, 3), (2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.08798
+Score: -0.90880
+Bottlenecks: []
+Output flow:
+2:	0:72/143
+4:	0:36/143
+6:	0:18/143
+8:	0:9/143
+10:	0:6/143
+14:	0:2/143
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 5.61665
+Score: -0.56167
+Bottlenecks: []
+Output flow:
+2:	0:83/145
+4:	0:42/145
+8:	0:12/145
+10:	0:6/145
+14:	0:2/145
+
+Open outputs: [3, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 6]
+Open inputs: [5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 6.89410
+Score: -0.68941
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:4/49
+10:	0:2/49
+14:	0:2/147
+17:	0:1/147
+
+Open outputs: [3, 7, 9, 13, 15]
+(open outputs depth regression): [0, 1, 3, 4, 6]
+Open inputs: [3, 5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5, 6]
+Possible cb pairs: [(0, 2), (0, 3), (0, 5), (0, 6), (1, 2), (1, 3), (1, 5), (1, 6), (3, 5), (3, 6), (4, 5), (4, 6)]
+Accuracy: 0.00000
+Error: 9.02525
+Score: -0.90252
+Bottlenecks: []
+Output flow:
+2:	0:76/149
+4:	0:38/149
+6:	0:20/149
+8:	0:10/149
+10:	0:5/149
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [3, 4, 5, 6]
+Open inputs: [3, 7, 9, 15]
+(open inputs depth regression): [0, 3, 4, 6]
+Possible cb pairs: [(3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.04784
+Score: -0.90478
+Bottlenecks: []
+Output flow:
+2:	0:78/151
+4:	0:40/151
+6:	0:20/151
+8:	0:10/151
+12:	0:3/151
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [5, 7, 9, 15]
+(open inputs depth regression): [0, 3, 4, 5]
+Possible cb pairs: [(2, 3), (2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 6.73968
+Score: -0.67397
+Bottlenecks: []
+Output flow:
+2:	0:80/153
+4:	0:40/153
+6:	0:20/153
+8:	0:10/153
+14:	0:2/153
+17:	0:1/153
+
+Open outputs: [3, 5, 7, 13, 15]
+(open outputs depth regression): [0, 1, 4, 5, 6]
+Open inputs: [3, 5, 7, 13, 15]
+(open inputs depth regression): [0, 1, 4, 5, 6]
+Possible cb pairs: [(0, 1), (0, 4), (0, 5), (0, 6), (1, 4), (1, 5), (1, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.67411
+Score: -0.86741
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:3/155
+14:	0:2/155
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [1, 2, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 15]
+(open inputs depth regression): [0, 3, 4, 5, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.52107
+Score: -1.05211
+Bottlenecks: []
+Output flow:
+2:	0:80/157
+4:	0:40/157
+6:	0:20/157
+8:	0:10/157
+10:	0:5/157
+14:	0:2/157
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 15]
+(open inputs depth regression): [0, 3, 4, 5, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.28063
+Score: -0.82806
+Bottlenecks: []
+Output flow:
+2:	0:80/159
+4:	0:40/159
+6:	0:20/159
+8:	0:10/159
+10:	0:2/53
+12:	0:1/53
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5, 6]
+Possible cb pairs: [(2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.61787
+Score: -0.86179
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:12/161
+10:	0:6/161
+12:	0:3/161
+14:	0:2/161
+
+Open outputs: [3, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 6]
+Open inputs: [3, 5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (2, 3), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6)]
+Accuracy: 0.00000
+Error: 9.17922
+Score: -0.91792
+Bottlenecks: []
+Output flow:
+2:	0:83/163
+4:	0:42/163
+6:	0:24/163
+8:	0:12/163
+14:	0:2/163
+
+Open outputs: [3, 5, 7, 13]
+(open outputs depth regression): [1, 4, 5, 6]
+Open inputs: [7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4)]
+Accuracy: 0.00000
+Error: 7.14332
+Score: -0.71433
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:2/55
+12:	0:1/55
+14:	0:2/165
+
+Open outputs: [3, 5, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 5, 6]
+Open inputs: [3, 5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.63251
+Score: -1.06325
+Bottlenecks: []
+Output flow:
+2:	0:84/167
+4:	0:42/167
+6:	0:21/167
+8:	0:12/167
+10:	0:6/167
+14:	0:2/167
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 6.34561
+Score: -0.63456
+Bottlenecks: []
+Output flow:
+2:	0:86/169
+4:	0:44/169
+6:	0:22/169
+8:	0:11/169
+10:	0:6/169
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [3, 4, 5, 6]
+Open inputs: [5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5]
+Possible cb pairs: [(3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.49832
+Score: -0.74983
+Bottlenecks: []
+Output flow:
+2:	0:29/57
+4:	0:44/171
+6:	0:22/171
+8:	0:4/57
+10:	0:2/57
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [3, 4, 5, 6]
+Open inputs: [5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5]
+Possible cb pairs: [(3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 10.69723
+Score: -1.06972
+Bottlenecks: []
+Output flow:
+2:	0:88/173
+4:	0:44/173
+6:	0:22/173
+8:	0:11/173
+10:	0:6/173
+14:	0:2/173
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 11, 15]
+(open inputs depth regression): [0, 2, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.51642
+Score: -0.85164
+Bottlenecks: []
+Output flow:
+2:	0:88/175
+4:	0:44/175
+6:	0:22/175
+8:	0:12/175
+10:	0:6/175
+12:	0:3/175
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5, 6]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.73427
+Score: -0.87343
+Bottlenecks: []
+Output flow:
+2:	0:30/59
+4:	0:16/59
+6:	0:8/59
+8:	0:4/59
+14:	0:2/177
+17:	0:1/177
+
+Open outputs: [3, 5, 7, 13, 15]
+(open outputs depth regression): [0, 1, 4, 5, 6]
+Open inputs: [5, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 5]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (1, 2), (1, 3), (1, 4), (1, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 10.76047
+Score: -1.07605
+Bottlenecks: []
+Output flow:
+2:	0:90/179
+4:	0:45/179
+6:	0:24/179
+8:	0:12/179
+10:	0:6/179
+14:	0:2/179
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.78123
+Score: -1.07812
+Bottlenecks: []
+Output flow:
+2:	0:92/181
+4:	0:46/181
+6:	0:23/181
+8:	0:12/181
+10:	0:6/181
+14:	0:2/181
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 5, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.77850
+Score: -0.87785
+Bottlenecks: []
+Output flow:
+2:	0:92/183
+4:	0:46/183
+6:	0:8/61
+8:	0:4/61
+10:	0:2/61
+12:	0:1/61
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 6]
+Possible cb pairs: [(2, 3), (2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.53789
+Score: -0.95379
+Bottlenecks: []
+Output flow:
+2:	0:94/185
+4:	0:47/185
+6:	0:24/185
+8:	0:12/185
+10:	0:6/185
+14:	0:2/185
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [3, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.25725
+Score: -0.92573
+Bottlenecks: []
+Output flow:
+2:	0:95/187
+4:	0:48/187
+6:	0:24/187
+8:	0:12/187
+10:	0:6/187
+14:	0:2/187
+
+Open outputs: [3, 5, 7, 9, 13]
+(open outputs depth regression): [1, 3, 4, 5, 6]
+Open inputs: [5, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 4.60365
+Score: -0.46037
+Bottlenecks: []
+Output flow:
+2:	0:32/63
+4:	0:16/63
+6:	0:8/63
+8:	0:4/63
+10:	0:2/63
+14:	0:2/189
+17:	0:1/189
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [0, 1, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 11.32259
+Score: -1.13226
+Bottlenecks: []
+Output flow:
+2:	0:96/191
+4:	0:48/191
+6:	0:24/191
+8:	0:12/191
+10:	0:6/191
+12:	0:3/191
+14:	0:2/191
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 11, 15]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.90265
+Score: -1.09027
+Bottlenecks: []
+Output flow:
+2:	0:104/193
+4:	0:52/193
+6:	0:26/193
+10:	0:8/193
+14:	0:2/193
+17:	0:1/193
+
+Open outputs: [3, 5, 9, 13, 15]
+(open outputs depth regression): [0, 1, 3, 5, 6]
+Open inputs: [3, 5, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 5, 6]
+Possible cb pairs: [(0, 1), (0, 2), (0, 5), (0, 6), (1, 2), (1, 5), (1, 6), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 6.82505
+Score: -0.68250
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:7/195
+12:	0:4/195
+14:	0:2/195
+
+Open outputs: [3, 5, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 5, 6]
+Open inputs: [3, 5, 7, 13, 15]
+(open inputs depth regression): [0, 1, 4, 5, 6]
+Possible cb pairs: [(1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.51844
+Score: -0.95184
+Bottlenecks: []
+Output flow:
+2:	0:102/197
+4:	0:52/197
+6:	0:26/197
+8:	0:13/197
+12:	0:4/197
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [5, 7, 13, 15]
+(open inputs depth regression): [0, 1, 4, 5]
+Possible cb pairs: [(2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 9.53708
+Score: -0.95371
+Bottlenecks: []
+Output flow:
+2:	0:103/199
+4:	0:52/199
+6:	0:26/199
+8:	0:14/199
+12:	0:4/199
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [5, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.28781
+Score: -0.82878
+Bottlenecks: []
+Output flow:
+2:	0:104/201
+4:	0:52/201
+6:	0:26/201
+8:	0:13/201
+12:	0:4/201
+14:	0:2/201
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [1, 2, 4, 5, 6]
+Open inputs: [3, 5, 7, 13, 15]
+(open inputs depth regression): [0, 1, 4, 5, 6]
+Possible cb pairs: [(1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.75357
+Score: -0.87536
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:15/203
+10:	0:8/203
+12:	0:4/203
+14:	0:2/203
+
+Open outputs: [3, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 6]
+Open inputs: [3, 5, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 5, 6]
+Possible cb pairs: [(1, 2), (1, 5), (1, 6), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6)]
+Accuracy: 0.00000
+Error: 6.05282
+Score: -0.60528
+Bottlenecks: []
+Output flow:
+2:	0:106/205
+4:	0:54/205
+6:	0:27/205
+8:	0:14/205
+12:	0:4/205
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [5, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.03276
+Score: -0.70328
+Bottlenecks: []
+Output flow:
+2:	0:104/207
+4:	0:52/207
+6:	0:26/207
+8:	0:14/207
+10:	0:7/207
+12:	0:4/207
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 5, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 5, 6]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.33335
+Score: -0.93334
+Bottlenecks: []
+Output flow:
+2:	0:108/209
+4:	0:54/209
+6:	0:27/209
+8:	0:14/209
+12:	0:4/209
+14:	0:2/209
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [1, 2, 4, 5, 6]
+Open inputs: [3, 5, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 5, 6]
+Possible cb pairs: [(1, 3), (1, 5), (1, 6), (2, 3), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.64632
+Score: -0.96463
+Bottlenecks: []
+Output flow:
+2:	0:106/211
+4:	0:54/211
+6:	0:31/211
+8:	0:16/211
+12:	0:4/211
+
+Open outputs: [3, 5, 7, 11]
+(open outputs depth regression): [2, 4, 5, 6]
+Open inputs: [9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3]
+Possible cb pairs: [(2, 3)]
+Accuracy: 0.00000
+Error: 8.37452
+Score: -0.83745
+Bottlenecks: []
+Output flow:
+2:	0:110/213
+4:	0:55/213
+6:	0:28/213
+8:	0:14/213
+12:	0:4/213
+14:	0:2/213
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [1, 2, 4, 5, 6]
+Open inputs: [3, 7, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 4, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 6), (2, 3), (2, 4), (2, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.68604
+Score: -0.96860
+Bottlenecks: []
+Output flow:
+2:	0:111/215
+4:	0:56/215
+6:	0:28/215
+8:	0:14/215
+12:	0:4/215
+14:	0:2/215
+
+Open outputs: [3, 5, 7, 11, 13]
+(open outputs depth regression): [1, 2, 4, 5, 6]
+Open inputs: [5, 7, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 4, 5]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 7.72810
+Score: -0.77281
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:4/217
+14:	0:2/217
+17:	0:1/217
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [0, 1, 2, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (0, 5), (0, 6), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.41663
+Score: -0.84166
+Bottlenecks: []
+Output flow:
+2:	0:110/219
+4:	0:56/219
+6:	0:28/219
+8:	0:14/219
+10:	0:7/219
+12:	0:4/219
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [5, 7, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 4, 5]
+Possible cb pairs: [(2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 9.35041
+Score: -0.93504
+Bottlenecks: []
+Output flow:
+2:	0:118/221
+4:	0:59/221
+6:	0:30/221
+10:	0:8/221
+12:	0:4/221
+14:	0:2/221
+
+Open outputs: [3, 5, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 5, 6]
+Open inputs: [3, 7, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 4, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 6), (2, 4), (2, 6), (3, 4), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 11.66153
+Score: -1.16615
+Bottlenecks: []
+Output flow:
+2:	0:112/223
+4:	0:56/223
+6:	0:28/223
+8:	0:14/223
+10:	0:7/223
+12:	0:4/223
+14:	0:2/223
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 13, 15]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.28324
+Score: -0.82832
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:8/225
+12:	0:4/225
+14:	0:2/225
+17:	0:1/225
+
+Open outputs: [3, 5, 9, 11, 13, 15]
+(open outputs depth regression): [0, 1, 2, 3, 5, 6]
+Open inputs: [3, 5, 7, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6]
+Possible cb pairs: [(0, 1), (0, 2), (0, 4), (0, 5), (0, 6), (1, 2), (1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.78544
+Score: -0.97854
+Bottlenecks: []
+Output flow:
+2:	0:114/227
+4:	0:58/227
+6:	0:31/227
+8:	0:16/227
+10:	0:8/227
+
+Open outputs: [3, 5, 7, 9]
+(open outputs depth regression): [3, 4, 5, 6]
+Open inputs: [9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3]
+Possible cb pairs: []
+Accuracy: 1.00000
+Error: 0.00000
+Score: 1.00000
+Bottlenecks: []
+Output flow:
+2:	0:1/2
+3:	0:1/2
+
+Open outputs: []
+(open outputs depth regression): []
+Open inputs: [1]
+(open inputs depth regression): [0]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 8.13680
+Score: -0.81368
+Bottlenecks: []
+Output flow:
+2:	0:116/231
+4:	0:58/231
+6:	0:10/77
+8:	0:5/77
+10:	0:8/231
+12:	0:4/231
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [3, 7, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 4, 6]
+Possible cb pairs: [(2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.28051
+Score: -0.92805
+Bottlenecks: []
+Output flow:
+2:	0:118/235
+4:	0:12/47
+6:	0:6/47
+8:	0:3/47
+10:	0:8/235
+12:	0:4/235
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [5, 7, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 4, 5]
+Possible cb pairs: [(2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.84405
+Score: -0.88441
+Bottlenecks: []
+Output flow:
+2:	0:119/237
+4:	0:20/79
+6:	0:10/79
+8:	0:16/237
+10:	0:8/237
+12:	0:4/237
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [5, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 11.81848
+Score: -1.18185
+Bottlenecks: []
+Output flow:
+2:	0:120/239
+4:	0:60/239
+6:	0:30/239
+8:	0:15/239
+10:	0:8/239
+12:	0:4/239
+14:	0:2/239
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 1.00000
+Error: 0.00000
+Score: 1.00000
+Bottlenecks: []
+Output flow:
+2:	0:1/2
+3:	0:1/2
+
+Open outputs: []
+(open outputs depth regression): []
+Open inputs: [1]
+(open inputs depth regression): [0]
+Possible cb pairs: []
+Accuracy: 0.00000
+Error: 4.01136
+Score: -0.40114
+Bottlenecks: []
+Output flow:
+2:	0:122/243
+4:	0:62/243
+6:	0:31/243
+8:	0:16/243
+10:	0:8/243
+12:	0:4/243
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [5, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 5]
+Possible cb pairs: [(2, 3), (2, 5), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 8.51642
+Score: -0.85164
+Bottlenecks: []
+Output flow:
+2:	0:123/245
+4:	0:62/245
+6:	0:32/245
+8:	0:16/245
+10:	0:8/245
+12:	0:4/245
+
+Open outputs: [3, 5, 7, 9, 11]
+(open outputs depth regression): [2, 3, 4, 5, 6]
+Open inputs: [7, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 4]
+Possible cb pairs: [(2, 3), (2, 4), (3, 4)]
+Accuracy: 0.00000
+Error: 9.67882
+Score: -0.96788
+Bottlenecks: []
+Output flow:
+2:	0:124/247
+4:	0:62/247
+6:	0:31/247
+8:	0:16/247
+10:	0:8/247
+12:	0:4/247
+14:	0:2/247
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 5, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (2, 3), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.76319
+Score: -1.07632
+Bottlenecks: []
+Output flow:
+2:	0:125/249
+4:	0:125/498
+6:	0:21/166
+8:	0:16/249
+10:	0:8/249
+12:	0:4/249
+14:	0:2/249
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 7]
+Possible cb pairs: [(2, 3), (2, 4), (2, 7), (3, 4), (3, 7), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 11.93147
+Score: -1.19315
+Bottlenecks: []
+Output flow:
+2:	0:126/251
+4:	0:63/251
+6:	0:32/251
+8:	0:16/251
+10:	0:8/251
+12:	0:4/251
+14:	0:2/251
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 7, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 4, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (2, 3), (2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.73219
+Score: -0.97322
+Bottlenecks: []
+Output flow:
+2:	0:127/253
+4:	0:64/253
+6:	0:32/253
+8:	0:16/253
+10:	0:8/253
+12:	0:4/253
+14:	0:2/253
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [5, 7, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]
+Accuracy: 0.00000
+Error: 10.42834
+Score: -1.04283
+Bottlenecks: []
+Output flow:
+2:	0:128/255
+4:	0:64/255
+6:	0:32/255
+8:	0:16/255
+10:	0:8/255
+12:	0:4/255
+14:	0:2/255
+17:	0:1/255
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [0, 1, 2, 3, 4, 5, 6]
+Open inputs: [3, 5, 7, 9, 11, 13, 15]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5, 6]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.89544
+Score: -0.88954
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:2/93
+16:	0:2/279
+19:	0:1/279
+
+Open outputs: [3, 5, 7, 11, 15, 17]
+(open outputs depth regression): [0, 1, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 17]
+(open inputs depth regression): [0, 2, 4, 5, 6, 7]
+Possible cb pairs: [(0, 2), (0, 4), (0, 5), (0, 6), (0, 7), (1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (3, 4), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 8.99790
+Score: -0.89979
+Bottlenecks: []
+Output flow:
+2:	0:2/3
+6:	0:16/95
+8:	0:8/95
+10:	0:4/95
+12:	0:2/95
+14:	0:1/95
+16:	0:2/285
+
+Open outputs: [5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6]
+Open inputs: [3, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (2, 3), (2, 4), (2, 5), (2, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 7.16179
+Score: -0.71618
+Bottlenecks: []
+Output flow:
+2:	0:144/287
+4:	0:72/287
+6:	0:36/287
+8:	0:18/287
+10:	0:9/287
+12:	0:6/287
+16:	0:2/287
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 17]
+(open inputs depth regression): [0, 2, 4, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.46201
+Score: -1.24620
+Bottlenecks: []
+Output flow:
+2:	0:160/313
+4:	0:80/313
+6:	0:40/313
+8:	0:20/313
+10:	0:10/313
+16:	0:2/313
+19:	0:1/313
+
+Open outputs: [3, 5, 7, 9, 15, 17]
+(open outputs depth regression): [0, 1, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 15, 17]
+(open inputs depth regression): [0, 1, 4, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 4), (0, 5), (0, 6), (0, 7), (1, 4), (1, 5), (1, 6), (1, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 5.20523
+Score: -0.52052
+Bottlenecks: []
+Output flow:
+2:	0:32/63
+4:	0:16/63
+6:	0:8/63
+8:	0:4/63
+10:	0:2/63
+14:	0:1/105
+16:	0:2/315
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 17]
+(open inputs depth regression): [0, 3, 4, 5, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.49362
+Score: -1.24936
+Bottlenecks: []
+Output flow:
+2:	0:160/317
+4:	0:80/317
+6:	0:40/317
+8:	0:20/317
+10:	0:10/317
+12:	0:5/317
+16:	0:2/317
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 17]
+(open inputs depth regression): [0, 3, 4, 5, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.94188
+Score: -0.99419
+Bottlenecks: []
+Output flow:
+2:	0:160/319
+4:	0:80/319
+6:	0:40/319
+8:	0:20/319
+10:	0:10/319
+12:	0:6/319
+14:	0:3/319
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 17]
+(open inputs depth regression): [0, 2, 4, 5, 6, 7]
+Possible cb pairs: [(2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.19643
+Error: 6.23693
+Score: -0.42726
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:24/329
+10:	0:12/329
+12:	0:6/329
+14:	0:3/329
+16:	0:2/329
+
+Open outputs: [3, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 7]
+Open inputs: [3, 5, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7)]
+Accuracy: 0.00000
+Error: 9.66223
+Score: -0.96622
+Bottlenecks: []
+Output flow:
+2:	0:56/111
+4:	0:28/111
+6:	0:14/111
+8:	0:8/111
+10:	0:4/111
+16:	0:2/333
+19:	0:1/333
+
+Open outputs: [3, 5, 7, 9, 15, 17]
+(open outputs depth regression): [0, 1, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 6, 7]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 6), (0, 7), (1, 2), (1, 3), (1, 4), (1, 6), (1, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 10.52988
+Score: -1.05299
+Bottlenecks: []
+Output flow:
+2:	0:168/335
+4:	0:84/335
+6:	0:42/335
+8:	0:21/335
+10:	0:12/335
+12:	0:6/335
+16:	0:2/335
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (1, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.64761
+Score: -1.26476
+Bottlenecks: []
+Output flow:
+2:	0:176/337
+4:	0:88/337
+6:	0:44/337
+8:	0:22/337
+14:	0:4/337
+16:	0:2/337
+19:	0:1/337
+
+Open outputs: [3, 5, 7, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 5, 6, 7]
+Open inputs: [3, 5, 7, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 2), (0, 5), (0, 6), (0, 7), (1, 2), (1, 5), (1, 6), (1, 7), (2, 5), (2, 6), (2, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.11898
+Score: -0.91190
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:6/341
+14:	0:3/341
+16:	0:2/341
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 17]
+(open inputs depth regression): [0, 2, 4, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.19643
+Error: 1.13550
+Score: 0.08288
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:4/49
+10:	0:2/49
+14:	0:4/343
+16:	0:2/343
+19:	0:1/343
+
+Open outputs: [3, 7, 9, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 4, 5, 7]
+Open inputs: [3, 5, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 6, 7]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (0, 6), (0, 7), (1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (4, 6), (4, 7), (5, 6), (5, 7)]
+Accuracy: 0.00000
+Error: 8.97867
+Score: -0.89787
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:4/115
+12:	0:2/115
+14:	0:1/115
+16:	0:2/345
+
+Open outputs: [3, 5, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 6, 7]
+Open inputs: [3, 5, 7, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (1, 7), (2, 3), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.73695
+Score: -1.27369
+Bottlenecks: []
+Output flow:
+2:	0:176/349
+4:	0:88/349
+6:	0:44/349
+8:	0:22/349
+10:	0:11/349
+12:	0:6/349
+16:	0:2/349
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 17]
+(open inputs depth regression): [0, 2, 4, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 8.82881
+Score: -0.88288
+Bottlenecks: []
+Output flow:
+2:	0:176/351
+4:	0:88/351
+6:	0:44/351
+8:	0:22/351
+10:	0:4/117
+12:	0:2/117
+14:	0:1/117
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 5, 6, 7]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 6.37523
+Score: -0.63752
+Bottlenecks: []
+Output flow:
+2:	0:60/119
+4:	0:30/119
+6:	0:16/119
+8:	0:8/119
+10:	0:4/119
+16:	0:2/357
+19:	0:1/357
+
+Open outputs: [3, 5, 7, 9, 15, 17]
+(open outputs depth regression): [0, 1, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 7]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (0, 7), (1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.80976
+Score: -1.28098
+Bottlenecks: []
+Output flow:
+2:	0:180/359
+4:	0:90/359
+6:	0:45/359
+8:	0:24/359
+10:	0:12/359
+12:	0:6/359
+16:	0:2/359
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (1, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 10.64842
+Score: -1.06484
+Bottlenecks: []
+Output flow:
+2:	0:184/365
+4:	0:92/365
+6:	0:46/365
+8:	0:23/365
+10:	0:12/365
+12:	0:6/365
+16:	0:2/365
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (1, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.86700
+Score: -1.28670
+Bottlenecks: []
+Output flow:
+2:	0:184/367
+4:	0:92/367
+6:	0:46/367
+8:	0:24/367
+10:	0:12/367
+12:	0:6/367
+14:	0:3/367
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 6, 7]
+Possible cb pairs: [(2, 3), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.77759
+Score: -0.97776
+Bottlenecks: []
+Output flow:
+2:	0:62/123
+4:	0:32/123
+6:	0:16/123
+8:	0:8/123
+10:	0:4/123
+16:	0:2/369
+19:	0:1/369
+
+Open outputs: [3, 5, 7, 9, 15, 17]
+(open outputs depth regression): [0, 1, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 7.57827
+Score: -0.75783
+Bottlenecks: []
+Output flow:
+2:	0:186/371
+4:	0:93/371
+6:	0:48/371
+8:	0:24/371
+10:	0:12/371
+12:	0:6/371
+16:	0:2/371
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.90936
+Score: -1.29094
+Bottlenecks: []
+Output flow:
+2:	0:188/373
+4:	0:94/373
+6:	0:47/373
+8:	0:24/373
+10:	0:12/373
+12:	0:6/373
+16:	0:2/373
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (1, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 7.42731
+Score: -0.74273
+Bottlenecks: []
+Output flow:
+2:	0:188/375
+4:	0:94/375
+6:	0:16/125
+8:	0:8/125
+10:	0:4/125
+12:	0:2/125
+14:	0:1/125
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 7]
+Possible cb pairs: [(2, 3), (2, 4), (2, 5), (2, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 10.04308
+Score: -1.00431
+Bottlenecks: []
+Output flow:
+2:	0:190/377
+4:	0:95/377
+6:	0:48/377
+8:	0:24/377
+10:	0:12/377
+12:	0:6/377
+16:	0:2/377
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 12.95123
+Score: -1.29512
+Bottlenecks: []
+Output flow:
+2:	0:191/379
+4:	0:96/379
+6:	0:48/379
+8:	0:24/379
+10:	0:12/379
+12:	0:6/379
+16:	0:2/379
+
+Open outputs: [3, 5, 7, 9, 11, 15]
+(open outputs depth regression): [1, 3, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 11.16697
+Score: -1.11670
+Bottlenecks: []
+Output flow:
+2:	0:64/127
+4:	0:32/127
+6:	0:16/127
+8:	0:8/127
+10:	0:4/127
+12:	0:2/127
+16:	0:2/381
+19:	0:1/381
+
+Open outputs: [3, 5, 7, 9, 11, 15, 17]
+(open outputs depth regression): [0, 1, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6, 7]
+Possible cb pairs: [(0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.63072
+Score: -1.36307
+Bottlenecks: []
+Output flow:
+2:	0:192/383
+4:	0:96/383
+6:	0:48/383
+8:	0:24/383
+10:	0:12/383
+12:	0:6/383
+14:	0:3/383
+16:	0:2/383
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 13, 17]
+(open inputs depth regression): [0, 2, 3, 4, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.19643
+Error: 6.90762
+Score: -0.49433
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:4/55
+10:	0:2/55
+12:	0:1/55
+14:	0:4/385
+16:	0:2/385
+
+Open outputs: [3, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 7]
+Open inputs: [3, 5, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7)]
+Accuracy: 0.00000
+Error: 10.01803
+Score: -1.00180
+Bottlenecks: []
+Output flow:
+2:	0:196/391
+4:	0:98/391
+6:	0:49/391
+8:	0:28/391
+10:	0:14/391
+14:	0:4/391
+16:	0:2/391
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.10091
+Score: -1.31009
+Bottlenecks: []
+Output flow:
+2:	0:208/401
+4:	0:104/401
+6:	0:52/401
+8:	0:26/401
+12:	0:8/401
+16:	0:2/401
+19:	0:1/401
+
+Open outputs: [3, 5, 7, 11, 15, 17]
+(open outputs depth regression): [0, 1, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 2), (0, 5), (0, 6), (0, 7), (1, 2), (1, 5), (1, 6), (1, 7), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.16638
+Score: -0.91664
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:7/403
+14:	0:4/403
+16:	0:2/403
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 15, 17]
+(open inputs depth regression): [0, 1, 4, 5, 6, 7]
+Possible cb pairs: [(1, 4), (1, 5), (1, 6), (1, 7), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 8.18812
+Score: -0.81881
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:14/405
+12:	0:7/405
+14:	0:4/405
+16:	0:2/405
+
+Open outputs: [3, 5, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 6, 7]
+Open inputs: [3, 5, 7, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 5, 6, 7]
+Possible cb pairs: [(1, 3), (1, 5), (1, 6), (1, 7), (2, 3), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.15391
+Score: -1.31539
+Bottlenecks: []
+Output flow:
+2:	0:208/409
+4:	0:104/409
+6:	0:52/409
+8:	0:26/409
+10:	0:13/409
+14:	0:4/409
+16:	0:2/409
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 15, 17]
+(open inputs depth regression): [0, 1, 4, 5, 6, 7]
+Possible cb pairs: [(1, 4), (1, 5), (1, 6), (1, 7), (2, 4), (2, 5), (2, 6), (2, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 8.63233
+Score: -0.86323
+Bottlenecks: []
+Output flow:
+2:	0:30/59
+4:	0:16/59
+6:	0:8/59
+8:	0:4/59
+14:	0:4/413
+16:	0:2/413
+19:	0:1/413
+
+Open outputs: [3, 5, 7, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (0, 5), (0, 6), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.83300
+Score: -1.08330
+Bottlenecks: []
+Output flow:
+2:	0:208/415
+4:	0:104/415
+6:	0:52/415
+8:	0:26/415
+10:	0:14/415
+12:	0:7/415
+14:	0:4/415
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 5, 6, 7]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.21913
+Score: -1.32191
+Bottlenecks: []
+Output flow:
+2:	0:210/419
+4:	0:105/419
+6:	0:56/419
+8:	0:28/419
+10:	0:14/419
+14:	0:4/419
+16:	0:2/419
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 7), (2, 3), (2, 4), (2, 5), (2, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.21879
+Score: -0.92188
+Bottlenecks: []
+Output flow:
+2:	0:216/425
+4:	0:108/425
+6:	0:54/425
+8:	0:27/425
+10:	0:14/425
+14:	0:4/425
+16:	0:2/425
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 5, 6, 7]
+Possible cb pairs: [(1, 3), (1, 5), (1, 6), (1, 7), (2, 3), (2, 5), (2, 6), (2, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.19643
+Error: 6.60850
+Score: -0.46442
+Bottlenecks: []
+Output flow:
+2:	0:4/7
+4:	0:2/7
+8:	0:31/427
+10:	0:16/427
+12:	0:8/427
+14:	0:4/427
+16:	0:2/427
+
+Open outputs: [3, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 7]
+Open inputs: [3, 5, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 6), (1, 7), (2, 3), (2, 6), (2, 7), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7)]
+Accuracy: 0.00000
+Error: 13.29597
+Score: -1.32960
+Bottlenecks: []
+Output flow:
+2:	0:216/431
+4:	0:108/431
+6:	0:54/431
+8:	0:28/431
+10:	0:14/431
+12:	0:7/431
+14:	0:4/431
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 6, 7]
+Possible cb pairs: [(2, 3), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.30863
+Score: -1.33086
+Bottlenecks: []
+Output flow:
+2:	0:220/433
+4:	0:110/433
+6:	0:55/433
+8:	0:28/433
+10:	0:14/433
+14:	0:4/433
+16:	0:2/433
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.22638
+Score: -0.92264
+Bottlenecks: []
+Output flow:
+2:	0:8/15
+4:	0:4/15
+6:	0:2/15
+10:	0:1/29
+12:	0:8/435
+14:	0:4/435
+16:	0:2/435
+
+Open outputs: [3, 5, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 6, 7]
+Open inputs: [3, 5, 7, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 5), (1, 6), (1, 7), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 10.10007
+Score: -1.01001
+Bottlenecks: []
+Output flow:
+2:	0:222/437
+4:	0:111/437
+6:	0:56/437
+8:	0:28/437
+10:	0:14/437
+14:	0:4/437
+16:	0:2/437
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 7), (2, 3), (2, 4), (2, 5), (2, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.34636
+Score: -1.33464
+Bottlenecks: []
+Output flow:
+2:	0:223/439
+4:	0:112/439
+6:	0:56/439
+8:	0:28/439
+10:	0:14/439
+14:	0:4/439
+16:	0:2/439
+
+Open outputs: [3, 5, 7, 9, 13, 15]
+(open outputs depth regression): [1, 2, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 8.69749
+Score: -0.86975
+Bottlenecks: []
+Output flow:
+2:	0:32/63
+4:	0:16/63
+6:	0:8/63
+8:	0:4/63
+10:	0:2/63
+14:	0:4/441
+16:	0:2/441
+19:	0:1/441
+
+Open outputs: [3, 5, 7, 9, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.37131
+Score: -1.33713
+Bottlenecks: []
+Output flow:
+2:	0:222/443
+4:	0:112/443
+6:	0:56/443
+8:	0:28/443
+10:	0:14/443
+12:	0:7/443
+14:	0:4/443
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6]
+Possible cb pairs: [(2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 12.17111
+Score: -1.21711
+Bottlenecks: []
+Output flow:
+2:	0:224/447
+4:	0:112/447
+6:	0:56/447
+8:	0:28/447
+10:	0:14/447
+12:	0:7/447
+14:	0:4/447
+16:	0:2/447
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 15, 17]
+(open inputs depth regression): [0, 1, 3, 4, 5, 6, 7]
+Possible cb pairs: [(1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.40844
+Score: -1.34084
+Bottlenecks: []
+Output flow:
+2:	0:232/449
+4:	0:116/449
+6:	0:58/449
+8:	0:29/449
+12:	0:8/449
+14:	0:4/449
+16:	0:2/449
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 5), (1, 6), (1, 7), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.45741
+Score: -1.34574
+Bottlenecks: []
+Output flow:
+2:	0:236/457
+4:	0:118/457
+6:	0:59/457
+8:	0:30/457
+12:	0:8/457
+14:	0:4/457
+16:	0:2/457
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [3, 5, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 6, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 6), (1, 7), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.48167
+Score: -1.34817
+Bottlenecks: []
+Output flow:
+2:	0:238/461
+4:	0:119/461
+6:	0:60/461
+8:	0:30/461
+12:	0:8/461
+14:	0:4/461
+16:	0:2/461
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [3, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 7), (2, 4), (2, 5), (2, 7), (3, 4), (3, 5), (3, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.49374
+Score: -1.34937
+Bottlenecks: []
+Output flow:
+2:	0:239/463
+4:	0:120/463
+6:	0:60/463
+8:	0:30/463
+12:	0:8/463
+14:	0:4/463
+16:	0:2/463
+
+Open outputs: [3, 5, 7, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 5, 6, 7]
+Open inputs: [5, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 9.85097
+Score: -0.98510
+Bottlenecks: []
+Output flow:
+2:	0:16/31
+4:	0:8/31
+6:	0:4/31
+8:	0:2/31
+12:	0:8/465
+14:	0:4/465
+16:	0:2/465
+19:	0:1/465
+
+Open outputs: [3, 5, 7, 11, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 3, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 2), (0, 4), (0, 5), (0, 6), (0, 7), (1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 11.39271
+Score: -1.13927
+Bottlenecks: []
+Output flow:
+2:	0:236/471
+4:	0:118/471
+6:	0:20/157
+8:	0:10/157
+10:	0:5/157
+12:	0:8/471
+14:	0:4/471
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 7]
+Possible cb pairs: [(2, 4), (2, 5), (2, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.22948
+Score: -0.92295
+Bottlenecks: []
+Output flow:
+2:	0:238/475
+4:	0:24/95
+6:	0:12/95
+8:	0:6/95
+10:	0:3/95
+12:	0:8/475
+14:	0:4/475
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6]
+Possible cb pairs: [(2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 14.29412
+Score: -1.42941
+Bottlenecks: []
+Output flow:
+2:	0:240/479
+4:	0:120/479
+6:	0:60/479
+8:	0:30/479
+10:	0:15/479
+12:	0:8/479
+14:	0:4/479
+16:	0:2/479
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 4, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 4), (1, 5), (1, 6), (1, 7), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.63582
+Score: -1.36358
+Bottlenecks: []
+Output flow:
+2:	0:244/487
+4:	0:122/487
+6:	0:62/487
+8:	0:31/487
+10:	0:16/487
+12:	0:8/487
+14:	0:4/487
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 5, 7]
+Possible cb pairs: [(2, 3), (2, 5), (2, 7), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.65901
+Score: -1.36590
+Bottlenecks: []
+Output flow:
+2:	0:246/491
+4:	0:124/491
+6:	0:62/491
+8:	0:31/491
+10:	0:16/491
+12:	0:8/491
+14:	0:4/491
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [5, 7, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 5, 6]
+Possible cb pairs: [(2, 3), (2, 5), (2, 6), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 10.25696
+Score: -1.02570
+Bottlenecks: []
+Output flow:
+2:	0:248/495
+4:	0:124/495
+6:	0:62/495
+8:	0:31/495
+10:	0:16/495
+12:	0:8/495
+14:	0:4/495
+16:	0:2/495
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 5, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 5), (1, 6), (1, 7), (2, 3), (2, 5), (2, 6), (2, 7), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.70500
+Score: -1.37050
+Bottlenecks: []
+Output flow:
+2:	0:250/499
+4:	0:126/499
+6:	0:63/499
+8:	0:32/499
+10:	0:16/499
+12:	0:8/499
+14:	0:4/499
+
+Open outputs: [3, 5, 7, 9, 11, 13]
+(open outputs depth regression): [2, 3, 4, 5, 6, 7]
+Open inputs: [5, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 6]
+Possible cb pairs: [(2, 3), (2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 14.44488
+Score: -1.44449
+Bottlenecks: []
+Output flow:
+2:	0:252/503
+4:	0:126/503
+6:	0:63/503
+8:	0:32/503
+10:	0:16/503
+12:	0:8/503
+14:	0:4/503
+16:	0:2/503
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 6, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 6), (1, 7), (2, 3), (2, 4), (2, 6), (2, 7), (3, 4), (3, 6), (3, 7), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 9.06833
+Score: -0.90683
+Bottlenecks: []
+Output flow:
+2:	0:254/507
+4:	0:127/507
+6:	0:64/507
+8:	0:32/507
+10:	0:16/507
+12:	0:8/507
+14:	0:4/507
+16:	0:2/507
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 7, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5, 7]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 7), (2, 3), (2, 4), (2, 5), (2, 7), (3, 4), (3, 5), (3, 7), (4, 5), (4, 7), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 14.48177
+Score: -1.44818
+Bottlenecks: []
+Output flow:
+2:	0:255/509
+4:	0:128/509
+6:	0:64/509
+8:	0:32/509
+10:	0:16/509
+12:	0:8/509
+14:	0:4/509
+16:	0:2/509
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15]
+(open outputs depth regression): [1, 2, 3, 4, 5, 6, 7]
+Open inputs: [5, 7, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5, 6]
+Possible cb pairs: [(1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (2, 3), (2, 4), (2, 5), (2, 6), (3, 4), (3, 5), (3, 6), (4, 5), (4, 6), (5, 6)]
+Accuracy: 0.00000
+Error: 12.02164
+Score: -1.20216
+Bottlenecks: []
+Output flow:
+2:	0:256/511
+4:	0:128/511
+6:	0:64/511
+8:	0:32/511
+10:	0:16/511
+12:	0:8/511
+14:	0:4/511
+16:	0:2/511
+19:	0:1/511
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15, 17]
+(open outputs depth regression): [0, 1, 2, 3, 4, 5, 6, 7]
+Open inputs: [3, 5, 7, 9, 11, 13, 15, 17]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5, 6, 7]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (3, 4), (3, 5), (3, 6), (3, 7), (4, 5), (4, 6), (4, 7), (5, 6), (5, 7), (6, 7)]
+Accuracy: 0.00000
+Error: 13.74325
+Score: -1.37433
+Bottlenecks: []
+Output flow:
+2:	0:512/1023
+4:	0:256/1023
+6:	0:128/1023
+8:	0:64/1023
+10:	0:32/1023
+12:	0:16/1023
+14:	0:8/1023
+16:	0:4/1023
+18:	0:2/1023
+21:	0:1/1023
+
+Open outputs: [3, 5, 7, 9, 11, 13, 15, 17, 19]
+(open outputs depth regression): [0, 1, 2, 3, 4, 5, 6, 7, 8]
+Open inputs: [3, 5, 7, 9, 11, 13, 15, 17, 19]
+(open inputs depth regression): [0, 1, 2, 3, 4, 5, 6, 7, 8]
+Possible cb pairs: [(0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (2, 3), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (3, 4), (3, 5), (3, 6), (3, 7), (3, 8), (4, 5), (4, 6), (4, 7), (4, 8), (5, 6), (5, 7), (5, 8), (6, 7), (6, 8), (7, 8)]
