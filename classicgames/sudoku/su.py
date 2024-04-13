@@ -83,6 +83,20 @@ def transpose(puzzles: np.ndarray) -> np.ndarray:
     '''
     return np.transpose(puzzles, (0, 2, 1))
 
+def random_symmetry(puzzles: np.ndarray) -> np.ndarray:
+    '''
+    Get a random symmetry of a series of Sudoku puzzles.
+    '''
+    perm = np.arange(1, 10)
+    np.random.shuffle(perm)
+    puzzles = number_swap(puzzles, perm)
+    puzzles = row_swap(puzzles, np.random.randint(0, 6, 3))
+    puzzles = column_swap(puzzles, np.random.randint(0, 6, 3))
+    puzzles = box_row_swap(puzzles, np.random.randint(0, 6))
+    puzzles = box_column_swap(puzzles, np.random.randint(0, 6))
+    if np.random.randint(0, 2):
+        puzzles = transpose(puzzles)
+    return puzzles
 
 
 if __name__ == '__main__':
