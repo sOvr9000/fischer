@@ -387,7 +387,7 @@ class PygEnv:
         self.loaded_fonts = {}
         # self.labels = {}
         self.set_rendering(True)
-        self.sprite_sheets = {}
+        self.sprite_sheets: dict[str, SpriteSheet] = {}
         self.palettes = {}
         self.current_gif_images = None
         self.cur_pixel_data = np.zeros((self.HEIGHT, self.WIDTH, 3))
