@@ -67,14 +67,14 @@ def box_row_swap(puzzles: np.ndarray, perm_index: int) -> np.ndarray:
     '''
     Swap the box rows of puzzles.
     '''
-    perm = permutations3[perm_index]
+    perm = permutations3[perm_index] * 3
     return np.concatenate([puzzles[:, perm[0]:perm[0]+3], puzzles[:, perm[1]:perm[1]+3], puzzles[:, perm[2]:perm[2]+3]], axis=1)
 
 def box_column_swap(puzzles: np.ndarray, perm_index: int) -> np.ndarray:
     '''
     Swap the box columns of puzzles.
     '''
-    perm = permutations3[perm_index]
+    perm = permutations3[perm_index] * 3
     return np.concatenate([puzzles[:, :, perm[0]:perm[0]+3], puzzles[:, :, perm[1]:perm[1]+3], puzzles[:, :, perm[2]:perm[2]+3]], axis=2)
 
 def transpose(puzzles: np.ndarray) -> np.ndarray:
