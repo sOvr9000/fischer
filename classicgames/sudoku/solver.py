@@ -196,8 +196,7 @@ def update_candidates_global(board: np.ndarray, candidates: np.ndarray, prune: b
 
 
 
-def solve(board: np.ndarray, max_steps: int = 512) -> int:
-    # Same as solve_sudoku3, but update candidates globally on each step.
+def solve(board: np.ndarray, max_steps: int = 512, backdoor_cell: tuple[int, int] = None) -> int:
     stack = [] # stack of (index, num), where index = row * 9 + col
     candidates = np.zeros((9, 9, 9), dtype=np.bool_) # candidates[row, col, num] = True if num is a candidate for cell (row, col)
 
@@ -208,6 +207,10 @@ def solve(board: np.ndarray, max_steps: int = 512) -> int:
     col = -1
     index = 0
     num = -1
+
+    if backdoor_cell is not None:
+        row, col = backdoor_cell
+        num = 0
 
     steps = 0
     while True:
