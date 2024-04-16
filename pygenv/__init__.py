@@ -850,6 +850,12 @@ class PygEnv:
     def to_pymunk_vector(x:float, y:float) -> pym.Vec2d:
         return pym.Vec2d(x, y)
 
+    def rect(self, x: float, y: float, w: float, h: float) -> pyg.Rect:
+        '''
+        Alias for pygame.Rect.
+        '''
+        return pyg.Rect(x, y, w, h)
+
 
 
 
