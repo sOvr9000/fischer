@@ -1697,7 +1697,7 @@ class PygEnv:
         self.pan_speed_y = y
 
     def set_world_pan_speed(self, x, y):
-        self.set_screen_pan_speed(self.world_zoom * x, self.world_zoom * y)
+        self.set_screen_pan_speed(self.world_zoom * self.scale * x, self.world_zoom * self.scale * y)
 
     def set_pannable(self, flag):
         if flag:
@@ -2210,7 +2210,7 @@ class GridEnv(PygEnv):
         self._grid = {}
         self.default_tile_color = (250, 245, 205)
         self.set_pan_controls('wasd')
-        self.set_screen_pan_speed(0.125 * self.scale, 0.125 * self.scale)
+        self.set_world_pan_speed(1, 1)
         self.set_grid_line_thickness(1)
         self.set_tile_outlines(False)
         self.set_scroll_speed(1.125)
@@ -2461,8 +2461,8 @@ class GridEnv(PygEnv):
         self.camera_grid_ly = floor((self.camera_y - self.HALF_HEIGHT) / self.scale) - 1
         self.camera_grid_uy = ceil((self.camera_y + self.HALF_HEIGHT) / self.scale) + 1
         self.mouse_grid_pos_x, self.mouse_grid_pos_y = self.screen_to_grid_space(self.mouse_pos_x, self.mouse_pos_y)
-        self.snapped_mouse_grid_pos_x = floor(self.mouse_grid_pos_x)
-        self.snapped_mouse_grid_pos_y = floor(self.mouse_grid_pos_y)
+        self.snapped_mouse_grid_pos_x = round(self.mouse_grid_pos_x)
+        self.snapped_mouse_grid_pos_y = round(self.mouse_grid_pos_y)
         if not self.dimension_x_is_infinite:
             self.snapped_mouse_grid_pos_x = max(0,min(self.dimension_x - 1, self.snapped_mouse_grid_pos_x))
         if not self.dimension_y_is_infinite:
@@ -2482,8 +2482,8 @@ class GridEnv(PygEnv):
             self.tile_hover_entered_args = None
             self.tile_hover_left_args = None
             self.tile_hover_stayed_args = (self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
-        self.snapped_last_mouse_grid_pos_x = self.snapped_mouse_grid_pos_x
-        self.snapped_last_mouse_grid_pos_y = self.snapped_mouse_grid_pos_y
+        self.last_snapped_mouse_grid_pos_x = self.snapped_mouse_grid_pos_x
+        self.last_snapped_mouse_grid_pos_y = self.snapped_mouse_grid_pos_y
 
     def __update(self):
         pass # it is okay to override this here; derived classes won't (shouldn't) implement this
@@ -2531,7 +2531,7 @@ class GridEnv(PygEnv):
             self.set_scale(self.float_scale / self.scroll_speed)
 
     def screen_to_grid_space(self, x, y):
-        return (x - self.HALF_WIDTH + self.camera_x) / self.scale, (self.HALF_HEIGHT + self.camera_y - y) / self.scale
+        return (x - self.HALF_WIDTH + self.camera_x) / self.scale, (self.HALF_HEIGHT + self.camera_y - y) / self.scale - 1
 
     def grid_to_screen_space(self, x, y):
         return x * self.scale - self.camera_x + self.HALF_WIDTH, -y * self.scale + self.camera_y + self.HALF_HEIGHT
@@ -2547,39 +2547,39 @@ class GridEnv(PygEnv):
         self.left_mouse_drag_start_snapped_grid_y = self.snapped_mouse_grid_pos_y
         self.left_mouse_drag_start_grid_x_mod = self.mouse_grid_pos_x_mod
         self.left_mouse_drag_start_grid_y_mod = self.mouse_grid_pos_y_mod
-        self.left_mouse_button_pressed_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.left_mouse_button_pressed_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _left_mouse_button_held(self):
-        self.left_mouse_button_held_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.left_mouse_button_held_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _left_mouse_button_released(self):
-        self.left_mouse_button_released_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.left_mouse_button_released_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
     
     def _middle_mouse_button_pressed(self):
         self.middle_mouse_drag_start_snapped_grid_x = self.snapped_mouse_grid_pos_x
         self.middle_mouse_drag_start_snapped_grid_y = self.snapped_mouse_grid_pos_y
         self.middle_mouse_drag_start_grid_x_mod = self.mouse_grid_pos_x_mod
         self.middle_mouse_drag_start_grid_y_mod = self.mouse_grid_pos_y_mod
-        self.middle_mouse_button_pressed_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.middle_mouse_button_pressed_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _middle_mouse_button_held(self):
-        self.middle_mouse_button_held_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.middle_mouse_button_held_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _middle_mouse_button_released(self):
-        self.middle_mouse_button_released_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.middle_mouse_button_released_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
     
     def _right_mouse_button_pressed(self):
         self.right_mouse_drag_start_snapped_grid_x = self.snapped_mouse_grid_pos_x
         self.right_mouse_drag_start_snapped_grid_y = self.snapped_mouse_grid_pos_y
         self.right_mouse_drag_start_grid_x_mod = self.mouse_grid_pos_x_mod
         self.right_mouse_drag_start_grid_y_mod = self.mouse_grid_pos_y_mod
-        self.right_mouse_button_pressed_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.right_mouse_button_pressed_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _right_mouse_button_held(self):
-        self.right_mouse_button_held_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.right_mouse_button_held_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _right_mouse_button_released(self):
-        self.right_mouse_button_released_on_tile(floor(self.mouse_grid_pos_x), floor(self.mouse_grid_pos_y), self.mouse_grid_pos_x % 1.0, self.mouse_grid_pos_y % 1.0)
+        self.right_mouse_button_released_on_tile(self.snapped_mouse_grid_pos_x, self.snapped_mouse_grid_pos_y, self.mouse_grid_pos_x_mod, self.mouse_grid_pos_y_mod)
 
     def _tile_hover_entered(self, x, y, u, v):
         self.tile_hover_entered(x, y, u, v)
