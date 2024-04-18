@@ -1515,6 +1515,12 @@ class PygEnv:
         self.max_zoom = max
         self.set_world_zoom(self.world_zoom)
 
+    def screen_to_world_space(self, x: float, y: float) -> tuple[float, float]:
+        return self.camera_x + (x - self.HALF_WIDTH) * self.inv_world_zoom, self.camera_y + (self.HALF_HEIGHT - y) * self.inv_world_zoom
+    
+    def world_to_screen_space(self, x: float, y: float) -> tuple[float, float]:
+        return self.HALF_WIDTH + self.world_zoom * (x - self.camera_x), self.HALF_HEIGHT - self.world_zoom * (y - self.camera_y)
+
     def draw_world_rect(self, color, x, y, w, h, width = 0, alpha = 255, rotation = 0):
         '''
         `rotation` is in radians.
@@ -2531,17 +2537,23 @@ class GridEnv(PygEnv):
     def preload_tile(self, x, y):
         pass
 
-    def _on_mouse_wheel(self, v):
-        if v > 0:
-            self.set_scale(self.float_scale * self.scroll_speed)
-        else:
-            self.set_scale(self.float_scale / self.scroll_speed)
+    # def _on_mouse_wheel(self, v):
+    #     if v > 0:
+    #         self.set_scale(self.float_scale * self.scroll_speed)
+    #     else:
+    #         self.set_scale(self.float_scale / self.scroll_speed)
 
-    def screen_to_grid_space(self, x, y):
-        return (x - self.HALF_WIDTH + self.camera_x) / self.scale, (self.HALF_HEIGHT + self.camera_y - y) / self.scale - 1
-
-    def grid_to_screen_space(self, x, y):
-        return x * self.scale - self.camera_x + self.HALF_WIDTH, -y * self.scale + self.camera_y + self.HALF_HEIGHT
+    def world_to_grid_space(self, x: float, y: float) -> tuple[float, float]:
+        return x / self.scale, y / self.scale
+    
+    def grid_to_world_space(self, x: float, y: float) -> tuple[float, float]:
+        return x * self.scale, y * self.scale
+    
+    def screen_to_grid_space(self, x: float, y: float) -> tuple[float, float]:
+        return self.world_to_grid_space(*self.screen_to_world_space(x, y))
+    
+    def grid_to_screen_space(self, x: float, y: float) -> tuple[float, float]:
+        return self.world_to_screen_space(*self.grid_to_world_space(x, y))
 
     def draw_grid_sprite(self, sprite_sheet_name, x, y, row, col, flip=False, scale=1, rotation=0):
         '''
