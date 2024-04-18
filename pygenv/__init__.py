@@ -2046,7 +2046,7 @@ class PygEnv:
                     if shape.draw_line:
                         self.draw_world_line(self.color_modify(shape.color, value=-.3), body.position.x, body.position.y, *self.rotated_point(body.position.x+shape.radius, body.position.y, body.angle, body.position.x, body.position.y), width=2/self.world_zoom)
                 elif isinstance(shape, pym.Segment):
-                    self.draw_world_line((255, 255, 255), *self.rotated_point(*shape.a, body.angle, body.position.x, body.position.y), *self.rotated_point(*shape.b, body.angle, body.position.x, body.position.y), width=shape.radius)
+                    self.draw_world_line(shape.color, *self.rotated_point(*shape.a, body.angle, body.position.x, body.position.y), *self.rotated_point(*shape.b, body.angle, body.position.x, body.position.y), width=shape.radius)
                 # elif isinstance(shape, pym.Poly):
                 #     self.draw_world_poly()
 
