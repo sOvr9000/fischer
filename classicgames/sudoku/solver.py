@@ -23,6 +23,21 @@ def is_solved(board: np.ndarray) -> bool:
         and np.all(np.prod(board, axis=1) == 362880) \
         and np.all(np.prod(board, axis=0) == 362880)
 
+def puzzle_solvability(board: np.ndarray) -> int:
+    '''
+    Returns 0 if the puzzle has no solution, 1 if it has a unique solution, and 2 if it has multiple solutions.
+    '''
+    sol1 = board.copy()
+    steps = solve(sol1)
+    if steps == -1:
+        return 0
+    sol2 = board.copy()[::-1, ::-1]
+    steps += solve(sol2)
+    sol2 = sol2[::-1, ::-1]
+    if np.array_equal(sol1, sol2):
+        return 1
+    return 2
+
 
 def hidden_singles(candidates: np.ndarray) -> bool:
     # Employ technique "Hidden Singles": If a candidate exists in only one square of a row, box, or column, then the other candidates in that square may be removed.
