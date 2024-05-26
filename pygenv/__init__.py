@@ -378,6 +378,7 @@ class PygEnv:
         self.downscaled_size = None
         self.bg_sprite = None
         self.do_draw_background = True
+        self.debug_draw_shapes = False
         self.pixel_data_is_grayscale = False
         self.pyg = pyg
         self.pym = pym
@@ -1010,6 +1011,86 @@ class PygEnv:
         else:
             index = index % 4
         return PygEnv.ADJACENCY_OFFSETS[index]
+    
+    @staticmethod
+    def bezier_quadratic(x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, t: float) -> tuple[float, float]:
+        '''
+        Return the point `(x, y)` on a quadratic Bezier curve defined by the control points `(x0, y0)`, `(x1, y1)`, and `(x2, y2)` at the interpolant `t`.
+        '''
+        t2 = t * t
+        t1 = 1 - t
+        t12 = t1 * t1
+        return (
+            t12 * x0 + 2 * t1 * t * x1 + t2 * x2,
+            t12 * y0 + 2 * t1 * t * y1 + t2 * y2
+        )
+    
+    @staticmethod
+    def bezier_cubic(x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, t: float) -> tuple[float, float]:
+        '''
+        Return the point `(x, y)` on a cubic Bezier curve defined by the control points `(x0, y0)`, `(x1, y1)`, `(x2, y2)`, and `(x3, y3)` at the interpolant `t`.
+        '''
+        t2 = t * t
+        t3 = t2 * t
+        one_minus_t = 1 - t
+        one_minus_t2 = one_minus_t * one_minus_t
+        one_minus_t3 = one_minus_t2 * one_minus_t
+
+        x = one_minus_t3 * x0 + 3 * one_minus_t2 * t * x1 + 3 * one_minus_t * t2 * x2 + t3 * x3
+        y = one_minus_t3 * y0 + 3 * one_minus_t2 * t * y1 + 3 * one_minus_t * t2 * y2 + t3 * y3
+
+        return x, y
+    
+    @staticmethod
+    def bezier_quadratic_gradient(x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, t: float) -> tuple[float, float]:
+        '''
+        Compute the rate of change of the quadratic Bezier curve at a given parameter `t`.
+        '''
+        t1 = 1 - t
+        t12 = t1 * t1
+        dx_dt = 2 * t1 * (x1 - x0) + 2 * t * (x2 - x1)
+        dy_dt = 2 * t1 * (y1 - y0) + 2 * t * (y2 - y1)
+        return dx_dt, dy_dt
+
+    @staticmethod
+    def bezier_cubic_gradient(x0: float, y0: float, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, t: float) -> tuple[float, float]:
+        '''
+        Computes the rate of change of the cubic bezier curve at a given parameter t.
+        '''
+        dt = 1 - t
+        dt2 = dt * dt
+        t2 = t * t
+        dx_dt = 3 * dt2 * (x1 - x0) + 6 * dt * t * (x2 - x1) + 3 * t2 * (x3 - x2)
+        dy_dt = 3 * dt2 * (y1 - y0) + 6 * dt * t * (y2 - y1) + 3 * t2 * (y3 - y2)
+        return (dx_dt, dy_dt)
+
+    @staticmethod
+    def bezier_path(points: list[tuple[float, float]], num_points: int = 16, include_endpoint: bool = False, arc_length: float = -1) -> list[tuple[float, float]]:
+        '''
+        Return a list of points on a Bezier path defined by the given control points.
+
+        Parameters
+        ----------
+        `points` : list[tuple[float, float]]
+            A list of control points, where each control point is a tuple of two floats.
+        `num_points` : int
+            The number of points to generate along the path.
+        `include_endpoint` : bool
+            If True, then include the last control point in the list of points.
+        `arc_length` : float
+            If non-negative, then the number of points is determined by the arc length of the path, which is divided by `arc_length` to determine the number of points.
+
+        Returns
+        -------
+        `list[tuple[float, float]]`
+            A list of points along the Bezier path.
+        '''
+        if arc_length > 0:
+            num_points = int(sum(PygEnv.distance(*points[i], *points[i+1]) for i in range(len(points)-1) if i % 3 == 0) / arc_length)
+        points = [PygEnv.bezier_cubic(*points[i], *points[i+1], *points[i+2], *points[i+3], t) for i in range(0, len(points)-3, 3) for t in np.linspace(0, 1, num_points)]
+        if include_endpoint:
+            points.append(points[-1])
+        return points
 
     def register_collision_callback(self, collision_type_a: int, collision_type_b: int, begin_callback: Callable[[pym.Arbiter], bool] = None, end_callback: Callable[[pym.Arbiter], bool] = None, post_solve_callback: Callable[[pym.Arbiter], bool] = None, pre_solve_callback: Callable[[pym.Arbiter], bool] = None):
         if not self.using_physics:
@@ -1531,13 +1612,15 @@ class PygEnv:
         self.draw_screen_circle(color, floor(self.HALF_WIDTH + self.world_zoom * (x - self.camera_x)), floor(self.HALF_HEIGHT - self.world_zoom * (y - self.camera_y)), r * self.world_zoom, width=int(.5+width*self.world_zoom))
     
     def draw_world_poly(self, color, vertices, width = 0):
-        self.draw_screen_poly(color, [
+        ps = [
             (
                 floor(self.HALF_WIDTH + self.world_zoom * (vx - self.camera_x)),
                 floor(self.HALF_HEIGHT - self.world_zoom * (vy - self.camera_y))
             )
             for vx, vy in vertices
-        ], width)
+        ]
+        print(ps)
+        self.draw_screen_poly(color, ps, int(.5 + width))
 
     def draw_world_regular_poly(self, color: tuple[int, int, int], num_vertices: int, x: float, y: float, r: float, rotation: float = 0, width = 0):
         a = self.TAU / num_vertices
@@ -2047,8 +2130,15 @@ class PygEnv:
                         self.draw_world_line(self.color_modify(shape.color, value=-.3), body.position.x, body.position.y, *self.rotated_point(body.position.x+shape.radius, body.position.y, body.angle, body.position.x, body.position.y), width=2/self.world_zoom)
                 elif isinstance(shape, pym.Segment):
                     self.draw_world_line(shape.color, *self.rotated_point(*shape.a, body.angle, body.position.x, body.position.y), *self.rotated_point(*shape.b, body.angle, body.position.x, body.position.y), width=shape.radius*2)
-                # elif isinstance(shape, pym.Poly):
-                #     self.draw_world_poly()
+                elif isinstance(shape, pym.Poly):
+                    self.draw_world_poly(
+                        shape.color,
+                        [
+                            self.rotated_point(*v, body.angle, body.position.x, body.position.y)
+                            for v in shape.get_vertices()
+                        ],
+                        width=shape.radius*2,
+                    )
 
 
         # old_mode = self.rect_draw_mode
