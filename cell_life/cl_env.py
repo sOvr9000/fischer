@@ -20,7 +20,7 @@ class CellLifeEnv(GridEnv):
         self.set_fps(10)
     def render(self):
         for cell in self.world.cells:
-            e = cell.energy
+            e = (cell.energy + 256) // 2
             self.draw_grid_rect((e, e, e), cell.x, cell.y, 1, 1)
     def update(self):
         self.world.update()
