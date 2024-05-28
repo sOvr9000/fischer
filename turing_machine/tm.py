@@ -70,20 +70,3 @@ class TuringMachine:
         return s
 
 
-
-if __name__ == '__main__':
-    tm = TuringMachine()
-    tm.set_tape([1, 1, 1], 0)
-    tm.set_initial_state(0)
-    tm.set_transition_table({
-        (0, 1): (0, 1, True),
-        (0, 0): (1, -1, True),
-        (1, 1): (1, 0, False),
-        (1, 0): (0, 0, True),
-    })
-    print(tm.transition_table)
-    while not tm.halted:
-        print(tm)
-        tm.step()
-    print(tm)
-
