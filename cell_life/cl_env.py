@@ -21,7 +21,7 @@ class CellLifeEnv(GridEnv):
     def render(self):
         for cell in self.world.cells:
             e = cell.energy
-            self.draw_grid_rect((e, e, e), cell.x, cell.y, 1, 1, cell.energy)
+            self.draw_grid_rect((e, e, e), cell.x, cell.y, 1, 1)
     def update(self):
         self.world.update()
 
