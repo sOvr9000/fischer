@@ -28,7 +28,17 @@ class CellCollisionBehavior:
 
 class CellCollisionBehaviorAttack(CellCollisionBehavior):
     def on_collision(self, cell: 'Cell', other_cell: 'Cell'):
-        '''TODO'''
+        # If the cells are facing each other, they both attack each other as though the attacked cell defends itself first.
+        if cell.get_last_move_direction() == (other_cell.get_last_move_direction() + 2) % 4:
+            e = cell.energy
+            cell.energy -= other_cell.genes[1] # defense attribute
+            if not cell.is_alive:
+                other_cell.energy += e * 3 // 4
+        if other_cell.is_alive:
+            e = other_cell.energy
+            other_cell.energy -= cell.genes[0] # offense attribute
+            if not other_cell.is_alive:
+                cell.energy += e * 3 // 4
 
 random_cell_movement_behavior = CellMovementBehaviorRandom()
 attack_cell_collision_behavior = CellCollisionBehaviorAttack()
@@ -36,7 +46,7 @@ attack_cell_collision_behavior = CellCollisionBehaviorAttack()
 
 
 class Cell:
-    def __init__(self, idx: int, world: 'CellLife', x: int, y: int, movement_behavior: CellMovementBehavior = None, collision_behavior: CellCollisionBehavior = None):
+    def __init__(self, idx: int, world: 'CellLife', x: int, y: int, movement_behavior: CellMovementBehavior = None, collision_behavior: CellCollisionBehavior = None, genes: bytearray = None):
         self.idx = idx
         self.world = world
         self.x = x
@@ -50,6 +60,9 @@ class Cell:
         if collision_behavior is None:
             collision_behavior = attack_cell_collision_behavior
         self.collision_behavior = collision_behavior
+        if genes is None:
+            genes = bytearray([np.random.randint(0, 256) for _ in range(128)])
+        self.genes = genes
     @property
     def energy(self) -> np.uint8:
         return self._energy
@@ -60,6 +73,9 @@ class Cell:
         elif energy > 255:
             energy = 255
         self._energy = np.uint8(energy)
+    @property
+    def is_alive(self) -> bool:
+        return self.energy > 0
     def get_last_move_direction(self) -> int:
         '''
         Return the direction of the last move of the cell.  If the cell did not move in the last step, return -1.
@@ -94,17 +110,19 @@ class Cell:
         if not self.world.is_within_bounds(nx, ny):
             return
         other_cell = self.world.get_cell(nx, ny)
-        if other_cell is not None:
+        if other_cell is not None and other_cell.is_alive:
             self.collision_behavior.on_collision(self, other_cell)
             return
         self.world.grid[self.y, self.x] = -1
         self.x, self.y = nx, ny
         self.world.grid[self.y, self.x] = self.idx
+        self.energy -= 1
     def update(self):
+        if not self.is_alive:
+            return
         d = self.movement_behavior.choose_direction(self)
         self.move(d)
-        if self.energy == 0:
-            self.world.remove_cell(self)
+        self.energy -= (self.genes[0] + self.genes[1]) // 128
     def __str__(self):
         return f'Cell({self.x}, {self.y}, {self.get_last_move_direction()}, {self.energy})'
 
@@ -154,6 +172,9 @@ class CellLife:
         np.random.shuffle(cell_indices)
         for idx in cell_indices:
             self.cells[idx].update()
+        for idx in range(len(self.cells)-1, -1, -1):
+            if not self.cells[idx].is_alive:
+                self.remove_cell(self.cells[idx])
     def open_positions(self) -> Iterable[tuple[int, int]]:
         for y in range(self.grid.shape[0]):
             for x in range(self.grid.shape[1]):
