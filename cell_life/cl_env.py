@@ -10,8 +10,8 @@ class CellLifeEnv(GridEnv):
     def __init__(self, world: CellLife):
         self.world = world
         super().__init__(screen_size=(self.world.size[0]*16, self.world.size[1]*16))
-        self.set_bg_color((32, 32, 32))
-        self.set_default_tile_color((0, 0, 0))
+        self.set_bg_color((16, 16, 32))
+        self.set_default_tile_color((24, 24, 48))
         self.set_dimensions(w=self.world.size[1], h=self.world.size[0])
         self.set_scale(16)
         self.center_camera()
