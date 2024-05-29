@@ -13,11 +13,11 @@ class CellLifeEnv(GridEnv):
         self.set_bg_color((16, 16, 32))
         self.set_default_tile_color((24, 24, 48))
         self.set_dimensions(w=self.world.size[1], h=self.world.size[0])
-        self.set_scale(16)
+        self.set_scale(8)
         self.center_camera()
         self.set_pannable(False)
         self.set_zoomable(False)
-        self.set_fps(10)
+        # self.set_fps(60)
     def render(self):
         for cell in self.world.cells:
             e = (cell.energy + 256) // 2
