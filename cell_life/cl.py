@@ -44,8 +44,92 @@ class CellCollisionBehaviorAttack(CellCollisionBehavior):
                 cell.energy += e * 3 // 4
                 cell.world.event_handler.on_cell_eaten(cell, other_cell)
 
+class CellCollisionBehaviorBreed(CellCollisionBehavior):
+    def on_collision(self, cell: 'Cell', other_cell: 'Cell'):
+        if cell.get_last_move_direction() != (other_cell.get_last_move_direction() + 2) % 4:
+            return
+        if gene_similarity(cell.genes, other_cell.genes) < 0.618:
+            return
+        if cell.energy < 128 or other_cell.energy < 128:
+            return
+        nx, ny = cell.world.get_random_nearby_open_position(cell.x, cell.y)
+        if nx is None:
+            return
+        print('cells breeding')
+        genes = crossover_genes(cell.genes, other_cell.genes)
+        cell.energy -= 32
+        other_cell.energy -= 8
+        cell.world.add_cell(nx, ny, genes=genes)
+
+class CellCollisionBehaviorComposite(CellCollisionBehavior):
+    def __init__(self, behaviors: list):
+        self.behaviors = behaviors
+    def on_collision(self, cell: 'Cell', other_cell: 'Cell'):
+        for behavior in self.behaviors:
+            behavior.on_collision(cell, other_cell)
+
 random_cell_movement_behavior = CellMovementBehaviorRandom()
 attack_cell_collision_behavior = CellCollisionBehaviorAttack()
+breed_cell_collision_behavior = CellCollisionBehaviorBreed()
+composite_cell_collision_behavior = CellCollisionBehaviorComposite([
+    attack_cell_collision_behavior,
+    breed_cell_collision_behavior
+])
+
+def mutate_genes(genes: bytearray, mutation_rate: float = 0.01) -> bytearray:
+    '''
+    Randomly flip bits in the genes.  The mutation rate is the probability for each bit to be flipped.  For example, if the mutation rate is 0.01, then on average 1% of the bits will be flipped.
+    '''
+    genes = bytearray(genes)
+    r = np.random.rand(len(genes) * 8)
+    for k, g in enumerate(genes):
+        x = 1
+        for i in range(8):
+            if r[k * 8 + i] < mutation_rate:
+                g ^= x
+            x <<= 1
+        genes[k] = g
+    return genes
+
+def crossover_genes(genes1: bytearray, genes2: bytearray, mutation_rate: float = 0.01) -> bytearray:
+    '''
+    Randomly select bits from either `genes1` or `genes2` to create a new set of genes, and return a mutation of the new set of genes.
+    '''
+    genes = bytearray(len(genes1))
+    r = np.random.rand(len(genes1) * 8)
+    for k in range(len(genes1)):
+        x = 1
+        for i in range(8):
+            if r[k * 8 + i] < 0.5:
+                genes[k] |= genes1[k] & x
+            else:
+                genes[k] |= genes2[k] & x
+            x <<= 1
+    return genes
+
+def get_gene_bits(genes: bytearray, from_idx: int = 0, to_idx: int = 1024) -> Iterable[int]:
+    for k, g in enumerate(genes):
+        if k * 8 + 8 <= from_idx:
+            continue
+        if k * 8 >= to_idx:
+            break
+        x = 1
+        for i in range(8):
+            if k * 8 + i < from_idx:
+                continue
+            if k * 8 + i >= to_idx:
+                break
+            yield (g & x) >> i
+            x <<= 1
+
+def gene_similarity(genes1: bytearray, genes2: bytearray) -> float:
+    '''
+    Return the similarity between two sets of genes as a value between 0 and 1, where 0 means the genes are completely different and 1 means the genes are identical.
+    '''
+    s = 0
+    for b1, b2 in zip(get_gene_bits(genes1), get_gene_bits(genes2)):
+        s += b1 == b2
+    return s * .125 / len(genes1)
 
 
 
@@ -173,11 +257,7 @@ class CellLife:
             self.cells.remove(cell)
             self.event_handler.on_cell_removed(cell)
             if self.cells_respawn:
-                g = bytearray(cell.genes)
-                for k in range(len(g)):
-                    if np.random.rand() < 0.5:
-                        g[k] = np.random.randint(0, 256)
-                c = self.add_cell(*self.get_random_open_position(), genes=g)
+                c = self.add_cell(*self.get_random_open_position(), genes=mutate_genes(cell.genes, mutation_rate=.25))
     def update(self):
         cell_indices = np.arange(len(self.cells))
         np.random.shuffle(cell_indices)
@@ -215,5 +295,8 @@ class CellLife:
         if not positions:
             return None, None
         return positions[np.random.randint(len(positions))]
-
-
+    def get_random_nearby_open_position(self, x: int, y: int, r: int = 1) -> tuple[int, int]:
+        positions = list(filter(lambda p: abs(x - p[0]) < r and abs(y - p[1]) < r, self.open_positions()))
+        if not positions:
+            return None, None
+        return positions[np.random.randint(len(positions))]
