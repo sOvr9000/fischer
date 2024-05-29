@@ -2407,10 +2407,10 @@ class GridEnv(PygEnv):
         self.grid_line_thickness = t
 
     def set_camera_grid_pos(self, x, y):
-        self.set_camera_pos((x + 1) * self.scale, (y + 1) * self.scale)
+        self.set_camera_pos(x * self.scale, y * self.scale)
 
     def set_camera_target_grid_pos(self, x, y):
-        self.set_camera_target_pos((x + 1) * self.scale, (y + 1) * self.scale)
+        self.set_camera_target_pos(x * self.scale, y * self.scale)
 
     def grid_translate_camera(self, x, y):
         self.camera_x = min(max(self.camera_x + x * self.scale, self.panning_minx), self.panning_maxx)
@@ -2443,8 +2443,8 @@ class GridEnv(PygEnv):
 
     def center_camera(self):
         self.set_camera_grid_pos(
-            0 if self.dimension_x_is_infinite else 0.5 * self.dimension_x - 1,
-            0 if self.dimension_y_is_infinite else 0.5 * self.dimension_y - 1
+            0 if self.dimension_x_is_infinite else 0.5 * self.dimension_x - .5,
+            0 if self.dimension_y_is_infinite else 0.5 * self.dimension_y + .5
         )
 
     def set_default_tile_color(self, color):
