@@ -31,7 +31,9 @@ class CellCollisionBehavior:
 class CellCollisionBehaviorAttack(CellCollisionBehavior):
     def on_collision(self, cell: 'Cell', other_cell: 'Cell'):
         # If the cells are facing each other, they both attack each other as though the attacked cell defends itself first.
-        if cell.get_last_move_direction() == (other_cell.get_last_move_direction() + 2) % 4:
+        if gene_similarity(cell.genes, other_cell.genes) >= .51:
+            return
+        if cell.is_facing_other_cell(other_cell):
             e = cell.energy
             cell.energy -= other_cell.genes[1] # defense attribute
             if not cell.is_alive:
@@ -46,20 +48,22 @@ class CellCollisionBehaviorAttack(CellCollisionBehavior):
 
 class CellCollisionBehaviorBreed(CellCollisionBehavior):
     def on_collision(self, cell: 'Cell', other_cell: 'Cell'):
-        if cell.get_last_move_direction() != (other_cell.get_last_move_direction() + 2) % 4:
+        if cell.is_facing_other_cell(other_cell):
             return
-        if gene_similarity(cell.genes, other_cell.genes) < 0.618:
+        # gs = gene_similarity(cell.genes, other_cell.genes)
+        # print(gs)
+        if gene_similarity(cell.genes, other_cell.genes) < 0.51:
             return
         if cell.energy < 128 or other_cell.energy < 128:
             return
-        nx, ny = cell.world.get_random_nearby_open_position(cell.x, cell.y)
+        nx, ny = cell.world.get_random_nearby_open_position(cell.x, cell.y, r=1)
         if nx is None:
             return
         print('cells breeding')
         genes = crossover_genes(cell.genes, other_cell.genes)
-        cell.energy -= 32
-        other_cell.energy -= 8
-        cell.world.add_cell(nx, ny, genes=genes)
+        cell.energy -= 128
+        other_cell.energy -= 128
+        cell.world.add_cell(nx, ny, 255, genes=genes)
 
 class CellCollisionBehaviorComposite(CellCollisionBehavior):
     def __init__(self, behaviors: list):
@@ -105,7 +109,7 @@ def crossover_genes(genes1: bytearray, genes2: bytearray, mutation_rate: float =
             else:
                 genes[k] |= genes2[k] & x
             x <<= 1
-    return genes
+    return mutate_genes(genes, mutation_rate=mutation_rate)
 
 def get_gene_bits(genes: bytearray, from_idx: int = 0, to_idx: int = 1024) -> Iterable[int]:
     for k, g in enumerate(genes):
@@ -134,19 +138,19 @@ def gene_similarity(genes1: bytearray, genes2: bytearray) -> float:
 
 
 class Cell:
-    def __init__(self, idx: int, world: 'CellLife', x: int, y: int, movement_behavior: CellMovementBehavior = None, collision_behavior: CellCollisionBehavior = None, genes: bytearray = None):
+    def __init__(self, idx: int, world: 'CellLife', x: int, y: int, energy: int, movement_behavior: CellMovementBehavior = None, collision_behavior: CellCollisionBehavior = None, genes: bytearray = None):
         self.idx = idx
         self.world = world
         self.x = x
         self.y = y
         self.prev_x = x
         self.prev_y = y
-        self._energy = np.uint8(255)
+        self._energy = np.uint8(energy)
         if movement_behavior is None:
             movement_behavior = random_cell_movement_behavior
         self.movement_behavior = movement_behavior
         if collision_behavior is None:
-            collision_behavior = attack_cell_collision_behavior
+            collision_behavior = composite_cell_collision_behavior
         self.collision_behavior = collision_behavior
         if genes is None:
             genes = bytearray([np.random.randint(0, 256) for _ in range(128)])
@@ -199,6 +203,9 @@ class Cell:
             return
         other_cell = self.world.get_cell(nx, ny)
         if other_cell is not None and other_cell.is_alive:
+            # must change prev_x and prev_y so that get_last_move_direction() returns the correct value
+            self.prev_x = self.x - dx
+            self.prev_y = self.y - dy
             self.collision_behavior.on_collision(self, other_cell)
             return
         self.world.grid[self.y, self.x] = -1
@@ -213,6 +220,18 @@ class Cell:
         self.energy -= (self.genes[0] + self.genes[1]) // 128
     def __str__(self):
         return f'Cell({self.x}, {self.y}, {self.get_last_move_direction()}, {self.energy})'
+    def is_facing_other_cell(self, other_cell: 'Cell') -> bool:
+        '''
+        Return whether the cells are facing each other.
+        '''
+        d = self.get_last_move_direction()
+        other_d = other_cell.get_last_move_direction()
+        if (d == -1) ^ (other_d == -1):
+            # True if only one of the cells did not move in the last step
+            return True
+        # Otherwise, either both did not move or both moved.
+        # Returns False if both did not move.
+        return d == (other_d + 2) % 4
 
 
 
@@ -236,13 +255,13 @@ class CellLife:
         return self.grid.shape
     def is_within_bounds(self, x: int, y: int) -> bool:
         return 0 <= x < self.grid.shape[1] and 0 <= y < self.grid.shape[0]
-    def add_cell(self, x: int, y: int, genes: bytearray = None) -> Cell:
+    def add_cell(self, x: int, y: int, energy: int, movement_behavior: CellMovementBehavior = None, collision_behavior: CellCollisionBehavior = None, genes: bytearray = None) -> Cell:
         if not self.is_within_bounds(x, y):
             return None
         if self.grid[y, x] != -1:
             return None
         idx = len(self.cells)
-        cell = Cell(idx, self, x, y, genes=genes)
+        cell = Cell(idx, self, x, y, energy, movement_behavior=movement_behavior, collision_behavior=collision_behavior, genes=genes)
         self.cells.append(cell)
         self.grid[y, x] = idx
         self.event_handler.on_cell_added(cell)
@@ -257,7 +276,9 @@ class CellLife:
             self.cells.remove(cell)
             self.event_handler.on_cell_removed(cell)
             if self.cells_respawn:
-                c = self.add_cell(*self.get_random_open_position(), genes=mutate_genes(cell.genes, mutation_rate=.25))
+                x, y = self.get_random_open_position()
+                if x is not None:
+                    c = self.add_cell(x, y, 64, genes=mutate_genes(cell.genes, mutation_rate=.25))
     def update(self):
         cell_indices = np.arange(len(self.cells))
         np.random.shuffle(cell_indices)
@@ -292,11 +313,11 @@ class CellLife:
                 yield cell
     def get_random_open_position(self) -> tuple[int, int]:
         positions = list(self.open_positions())
-        if not positions:
+        if len(positions) == 0:
             return None, None
         return positions[np.random.randint(len(positions))]
     def get_random_nearby_open_position(self, x: int, y: int, r: int = 1) -> tuple[int, int]:
-        positions = list(filter(lambda p: abs(x - p[0]) < r and abs(y - p[1]) < r, self.open_positions()))
-        if not positions:
+        positions = list(filter(lambda p: abs(x - p[0]) <= r and abs(y - p[1]) <= r, self.open_positions()))
+        if len(positions) == 0:
             return None, None
         return positions[np.random.randint(len(positions))]
