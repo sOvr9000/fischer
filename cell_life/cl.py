@@ -111,7 +111,7 @@ def crossover_genes(genes1: bytearray, genes2: bytearray, mutation_rate: float =
             x <<= 1
     return mutate_genes(genes, mutation_rate=mutation_rate)
 
-def get_gene_bits(genes: bytearray, from_idx: int = 0, to_idx: int = 1024) -> Iterable[int]:
+def get_gene_bits(genes: bytearray, from_idx: int = 0, to_idx: int = 8192) -> Iterable[int]:
     for k, g in enumerate(genes):
         if k * 8 + 8 <= from_idx:
             continue
@@ -153,7 +153,7 @@ class Cell:
             collision_behavior = composite_cell_collision_behavior
         self.collision_behavior = collision_behavior
         if genes is None:
-            genes = bytearray([np.random.randint(0, 256) for _ in range(128)])
+            genes = bytearray([np.random.randint(0, 256) for _ in range(self.world.genes_length)])
         self.genes = genes
     @property
     def energy(self) -> np.uint8:
@@ -236,13 +236,14 @@ class Cell:
 
 
 class CellLife:
-    def __init__(self, size: tuple[int, int], event_handler: EventHandler = None, cells_respawn: bool = True):
+    def __init__(self, size: tuple[int, int], genes_length: int = 128, event_handler: EventHandler = None, cells_respawn: bool = True):
         self.cells = []
         self.grid = -np.ones(size, dtype=int) # map of grid positions to indices of `CellLife.cells`, defaulting to -1 when there is no cell
         if event_handler is None:
             event_handler = EventHandler()
         self.event_handler = event_handler
         self.cells_respawn = cells_respawn
+        self.genes_length = genes_length
     def get_cell(self, x: int, y: int) -> Cell:
         if not self.is_within_bounds(x, y):
             return None
