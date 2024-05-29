@@ -10,6 +10,8 @@ class EventHandler:
         pass
     def on_cell_removed(self, cell: 'Cell'):
         pass
+    def on_cell_eaten(self, eater: 'Cell', eaten: 'Cell'):
+        pass
 
 class CellMovementBehavior:
     def choose_direction(self, cell: 'Cell') -> int:
@@ -34,11 +36,13 @@ class CellCollisionBehaviorAttack(CellCollisionBehavior):
             cell.energy -= other_cell.genes[1] # defense attribute
             if not cell.is_alive:
                 other_cell.energy += e * 3 // 4
+                cell.world.event_handler.on_cell_eaten(other_cell, cell)
         if other_cell.is_alive:
             e = other_cell.energy
             other_cell.energy -= cell.genes[0] # offense attribute
             if not other_cell.is_alive:
                 cell.energy += e * 3 // 4
+                cell.world.event_handler.on_cell_eaten(cell, other_cell)
 
 random_cell_movement_behavior = CellMovementBehaviorRandom()
 attack_cell_collision_behavior = CellCollisionBehaviorAttack()
@@ -129,12 +133,13 @@ class Cell:
 
 
 class CellLife:
-    def __init__(self, size: tuple[int, int], event_handler: EventHandler = None):
+    def __init__(self, size: tuple[int, int], event_handler: EventHandler = None, cells_respawn: bool = True):
         self.cells = []
         self.grid = -np.ones(size, dtype=int) # map of grid positions to indices of `CellLife.cells`, defaulting to -1 when there is no cell
         if event_handler is None:
             event_handler = EventHandler()
         self.event_handler = event_handler
+        self.cells_respawn = cells_respawn
     def get_cell(self, x: int, y: int) -> Cell:
         if not self.is_within_bounds(x, y):
             return None
@@ -147,13 +152,13 @@ class CellLife:
         return self.grid.shape
     def is_within_bounds(self, x: int, y: int) -> bool:
         return 0 <= x < self.grid.shape[1] and 0 <= y < self.grid.shape[0]
-    def add_cell(self, x: int, y: int) -> Cell:
+    def add_cell(self, x: int, y: int, genes: bytearray = None) -> Cell:
         if not self.is_within_bounds(x, y):
             return None
         if self.grid[y, x] != -1:
             return None
         idx = len(self.cells)
-        cell = Cell(idx, self, x, y)
+        cell = Cell(idx, self, x, y, genes=genes)
         self.cells.append(cell)
         self.grid[y, x] = idx
         self.event_handler.on_cell_added(cell)
@@ -167,6 +172,12 @@ class CellLife:
         if cell in self.cells:
             self.cells.remove(cell)
             self.event_handler.on_cell_removed(cell)
+            if self.cells_respawn:
+                g = bytearray(cell.genes)
+                for k in range(len(g)):
+                    if np.random.rand() < 0.5:
+                        g[k] = np.random.randint(0, 256)
+                c = self.add_cell(*self.get_random_open_position(), genes=g)
     def update(self):
         cell_indices = np.arange(len(self.cells))
         np.random.shuffle(cell_indices)
@@ -199,5 +210,10 @@ class CellLife:
             cell = self.get_cell(nx, ny)
             if cell is not None:
                 yield cell
+    def get_random_open_position(self) -> tuple[int, int]:
+        positions = list(self.open_positions())
+        if not positions:
+            return None, None
+        return positions[np.random.randint(len(positions))]
 
 
