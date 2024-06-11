@@ -1,1 +1,1 @@
-from cellgame import CellGame, Player, Cell
+from .cellgame import CellGame
