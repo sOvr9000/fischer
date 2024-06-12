@@ -86,16 +86,16 @@ class CellGame:
             target_cell_owner = self.cell_data[self.projectiles[i, 2], 0]
             if projectile_owner == target_cell_owner:
                 # If the target cell is owned by the projectile owner, add the mass of the projectile to the target cell.
-                self.cell_data[target_cell, 1] += projectile_mass
+                # Note that uint8 overflow/negatives must be avoided.
+                self.cell_data[target_cell, 1] += min(65535 - projectile_mass, projectile_mass)
             else:
                 # If the target cell is unowned, take the mass of the projectile away from the target cell.
+                # Note that uint8 overflow/negatives must be avoided.
                 new_mass = self.cell_data[target_cell, 1] - min(self.cell_data[target_cell, 1], projectile_mass)
-                # If the target cell has negative mass, change the owner to the projectile owner and set the mass to the absolute value of the mass.
-                if new_mass == 0:
-                    print('captured')
-                    input()
-                    self.set_cell_owner(target_cell, projectile_owner)
+                # If the target cell would have negative mass, change the owner to the projectile owner and set the mass to the difference between the projectile mass and the target cell mass.
+                if projectile_mass > self.cell_data[target_cell, 1]:
                     self.cell_data[target_cell, 1] = projectile_mass - self.cell_data[target_cell, 1]
+                    self.set_cell_owner(target_cell, projectile_owner)
                     # If the target cell was unowned, add it to the list of owned cells.
                     if target_cell not in self.owned_cells:
                         self.owned_cells.append(target_cell)
