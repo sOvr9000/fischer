@@ -3,7 +3,7 @@
 import zlib
 import base64
 import json
-from clipboard import paste
+from clipboard import paste, copy
 
 from typing import Iterable
 
@@ -183,4 +183,5 @@ if __name__ == '__main__':
     # print_bp_data(bp)
     transpose_balancer_bp(bp)
     bp_str = get_blueprint_string(bp)
+    copy(bp_str)
     print(bp_str)
