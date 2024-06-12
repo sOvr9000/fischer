@@ -3,6 +3,8 @@ import numpy as np
 from graph_tools import Graph
 from typing import Iterable
 
+from .behaviors import PlayerBehavior
+
 
 
 class CellGame:
@@ -230,6 +232,16 @@ class CellGame:
         '''
         return max(1, int(.5 + self.cell_graph.get_edge_weight(source_cell, target_cell)))
 
+    def can_add_projectile(self, source_cell: int, target_cell: int, mass: int) -> bool:
+        '''
+        Returns True if a projectile with `mass` mass can be launched from `source_cell` to `target_cell`, and False otherwise.
+        '''
+        if not self.is_cell_connected(source_cell, target_cell):
+            return False
+        if self.cell_data[source_cell, 1] < mass:
+            return False
+        return True
+
     def add_projectile(self, source_cell: int, target_cell: int, mass: int):
         '''
         Add a projectile with `mass` mass, `source_cell` source cell, and `target_cell` target cell.
@@ -335,6 +347,49 @@ class CellGame:
         '''
         return np.where(self.cell_data[:, 0] == owner)[0]
     
+    def all_cells_of_player(self, player: int) -> np.ndarray:
+        '''
+        Return a list of all cells owned by player `player`.
+        '''
+        return self.all_cells_of_owner(player + 1)
+    
+    def get_cell_mass(self, cell: int) -> np.uint16:
+        '''
+        Return the mass of the cell.
+        '''
+        return self.cell_data[cell, 1]
+    
+    def get_cell_owner(self, cell: int) -> np.uint16:
+        '''
+        Return the owner of the cell.
+        '''
+        return self.cell_data[cell, 0]
+    
+    def get_cell_growth_rate(self, cell: int) -> np.uint16:
+        '''
+        Return the growth rate of the cell.
+        '''
+        return self.cell_data[cell, 2]
+    
+    def get_cell_max_mass(self, cell: int) -> np.uint16:
+        '''
+        Return the maximum mass of the cell.
+        '''
+        return self.cell_data[cell, 3]
+    
+    def run_player_behavior(self, behavior: PlayerBehavior, player: int):
+        '''
+        Run the behavior of player `player` in the game.
+        '''
+        action, args = behavior.choose_action(self, player)
+        if action == 'pass':
+            return
+        elif action == 'send':
+            if self.can_add_projectile(*args):
+                self.add_projectile(*args)
+        else:
+            raise ValueError(f'Invalid action: {action}')
+
     # def get_attacking_cells_of_owner(self, owner: int) -> np.ndarray:
     #     '''
     #     Return a list of all cells owned by player `owner - 1` that can attack cells that are either unowned or owned by other players.
