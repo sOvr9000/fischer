@@ -34,7 +34,7 @@ def analyze_string() -> BeltGraph:
         print(u)
 
     print('Graph summary:')
-    print(graph.summary)
+    print(graph.advanced_summary)
     print('Graph is solved:')
     print(graph.is_solved())
 

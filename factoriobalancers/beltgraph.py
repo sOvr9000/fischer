@@ -4,6 +4,7 @@ import base64
 import zlib
 from copy import deepcopy
 from graph_tools import Graph
+from sympy import factorint
 from fischer.factoriobps import load_blueprint_string_from_file, is_blueprint_data, load_blueprint_string, get_entity_map, transpose_balancer_bp
 from .metrics import measure_accuracy
 from .sparsesolver import calculate_flow_points, pretty_relations, construct_relations
@@ -68,6 +69,15 @@ class BeltGraph(Graph):
     @property
     def summary(self):
         return f'{self.balancer_type} [V:{self.num_internal_vertices} E:{max(0,self.num_internal_edges)}]'
+    @property
+    def advanced_summary(self) -> str:
+        in_factors = factorint(self.num_inputs)
+        out_factors = factorint(self.num_outputs)
+        in_str = ' * '.join(f'{k}^{v}' for k, v in in_factors.items())
+        out_str = ' * '.join(f'{k}^{v}' for k, v in out_factors.items())
+        factor_sum = sum(k*v for k, v in in_factors.items()) + sum(k*v for k, v in out_factors.items())
+        s = self.summary
+        return f'{s} [{in_str} -> {out_str}] [factor sum: {factor_sum}]'
     def internal_edges(self):
         for u, v in self.edges():
             if self.is_input(u):
