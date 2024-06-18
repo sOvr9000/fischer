@@ -1,7 +1,7 @@
 
 import os
 import numpy as np
-from typing import Generator
+from typing import Iterable
 from fischer.math.common import l1_distance, lerp_vector, l2_distance
 from .beltgraph import try_derive_graph, BeltGraph
 import colorama
@@ -84,6 +84,12 @@ def get_splitter_positions(x: int, y: int, d: int) -> tuple[tuple[int, int], tup
     Return the positions that the splitter occupies.
     '''
     return (x, y), get_splitter_other_position(x, y, d)
+
+def splitters_are_directly_connected(sx0: int, sy0: int, sd0: int, sx1: int, sy1: int, sd1: int) -> bool:
+    '''
+    Return whether splitter 0 is directly connected to splitter 1, without needing belts to be placed between them.
+    '''
+    return (sx0, sy0) in get_splitter_input_positions(sx1, sy1, sd1) and (sx1, sy1) in get_splitter_output_positions(sx0, sy0, sd0)
 
 def get_adjacency_offset(d: int) -> tuple[int, int]:
     assert is_valid_direction(d)
@@ -336,7 +342,7 @@ class BeltGrid:
         if not self.is_open(x, y):
             return (x, y, d) in self.outputs
         return True
-    def underground_exits(self, x: int, y: int, d: int, max_length: int) -> Generator[tuple[int, int], None, None]:
+    def underground_exits(self, x: int, y: int, d: int, max_length: int) -> Iterable[tuple[int, int]]:
         '''
         Iterate over the possible exit points of an underground belt that starts on `(x, y)` in direction `d`, in order of increasing distance from `(x, y)`.
         '''
@@ -610,6 +616,69 @@ class BeltGrid:
                     self.underground_types[_y, _x] = True
             elif entity['name'] == 'express-splitter':
                 self.set_splitter(_x, _y, d)
+    def trace_belt(self, x: int, y: int, max_underground_length: int = 8, endpoint: bool = True) -> Iterable[tuple[int, int, int]]:
+        '''
+        Iterate over the belts from any entity to the next splitter.  This allows traversal from one splitter to another.
+
+        If `endpoint = True`, then the iteration will stop at the splitter, inclusively.  Otherwise, the iteration will stop before yielding the splitter position.
+        '''
+        assert is_valid_position(x, y)
+        if not self.is_within_bounds(x, y):
+            return
+        _x, _y, _d = x, y, self.grid[y, x] % 4
+        while True:
+            if self.is_underground(_x, _y) and not self.is_underground_exit(_x, _y):
+                ux, uy = _x, _y
+                for _ in range(max_underground_length + 1):
+                    ux, uy = offset_position(ux, uy, _d)
+                    if not self.is_within_bounds(ux, uy):
+                        return
+                    ud = self.grid[uy, ux] % 4
+                    if self.is_underground(ux, uy) and ud == _d:
+                        if self.is_underground_exit(ux, uy):
+                            _x, _y = ux, uy
+                            break
+                        return # an entrance was found but not an exit, breaking the validity of the original underground entrance
+            else:
+                _x, _y = offset_position(_x, _y, _d)
+                if not self.is_within_bounds(_x, _y) or not self.is_passable(_x, _y, _d):
+                    return
+            _d = self.grid[_y, _x] % 4
+            if self.is_splitter(_x, _y):
+                if endpoint:
+                    yield _x, _y, _d
+                break
+            yield _x, _y, _d
+    def remove_splitter_connection(self, sx0: int, sy0: int, sx1: int, sy1: int) -> bool:
+        '''
+        Remove the belt connection between two splitters.  Return whether the operation was successful.
+
+        If splitter 0 feeds directly into splitter 1 without any belts in between, then nothing is changed and the operation is assumed to be succesful.
+        '''
+        assert is_valid_position(sx0, sy0)
+        assert is_valid_position(sx1, sy1)
+        if not self.is_within_bounds(sx0, sy0) or not self.is_within_bounds(sx1, sy1):
+            return False
+        if not self.is_splitter(sx0, sy0) or not self.is_splitter(sx1, sy1):
+            return False
+        sx0, sy0, sd0 = self.get_splitter(self.get_splitter_index_from_position(sx0, sy0))
+        sx1, sy1, sd1 = self.get_splitter(self.get_splitter_index_from_position(sx1, sy1))
+        if splitters_are_directly_connected(sx0, sy0, sd0, sx1, sy1, sd1):
+            return True
+        for p in get_splitter_positions(sx0, sy0, sd0):
+            path = list(self.trace_belt(*p[:2], endpoint=True))
+            if path[-1] in get_splitter_positions(sx1, sy1, sd1):
+                # Remove belts along path
+                for x, y, d in path:
+                    self.grid[y, x] = -1
+                    self.underground_types[y, x] = False
+                return True
+        return False
+    def nudge_splitter(self, sx: int, sy: int, nudge_d: int) -> bool:
+        '''
+        Nudge a splitter at `(sx, sy)` in direction `nudge_d`.  Return whether the splitter had space for the nudge and its belts were able to be reconnected forward and backward automatically by A* pathfinding.
+        '''
+        raise NotImplementedError
     def get_splitter_index_from_position(self, x: int, y: int) -> int:
         '''
         Return the index of a splitter, input, or output that occupies `(x, y)`.
@@ -950,7 +1019,7 @@ class BeltTurtle:
         for x, y, d in path[i+1:]:
             if (x, y, d) != self.position:
                 self.set_position(x, y, d)
-    def possible_steps(self, max_underground_length: int) -> Generator[tuple[int, int, int], None, None]:
+    def possible_steps(self, max_underground_length: int) -> Iterable[tuple[int, int, int]]:
         '''
         Iterate over all possible positions and directions as tuples of the form `(x, y, d)` which the turtle can enter from its current position and direction.
 
