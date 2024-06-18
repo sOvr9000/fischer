@@ -536,20 +536,24 @@ class BeltGrid:
         def offset_pos(x: int, y: int) -> dict[str, float]:
             return {'x': x+.5, 'y': y+.5}
         i = -1
+        grid = self.grid.copy()
+        for sx, sy, sd in self.splitters:
+            x, y = get_splitter_other_position(sx, sy, sd)
+            grid[y, x] = -1
         entities: list[dict] = [
             {
                 'entity_number': (i := i + 1),
-                'name': 'express-transport-belt' if self.grid[y, x] < 4 else 'express-underground-belt',
+                'name': 'express-transport-belt' if grid[y, x] < 4 else 'express-underground-belt',
                 'position': offset_pos(x, y),
-                'direction': int(self.grid[y, x] % 4 * 2), # Cast to int to avoid numpy int32, which is not JSON serializable.
+                'direction': int(grid[y, x] % 4 * 2 + 2), # Cast to int to avoid numpy int32, which is not JSON serializable.
             } | ({ # This is the dictionary operator for calling update(), as in `a.update(b)` <=> `a |= b`.
                 'type': 'output' if self.is_underground_exit(x, y) else 'input'
-            } if self.grid[y, x] >= 4 else {})
-            if self.grid[y, x] < 8 else
-            {'name': 'express-splitter', 'position': splitter_pos(x, y), 'direction': int((self.grid[y, x] - 8) * 2)}
+            } if 4 <= grid[y, x] < 8 else {})
+            if grid[y, x] < 8 else
+            {'entity_number': (i := i + 1), 'name': 'express-splitter', 'position': splitter_pos(x, y), 'direction': int((grid[y, x] - 7) * 2)}
             for y in range(self.height)
             for x in range(self.width)
-            if self.grid[y, x] >= 0
+            if grid[y, x] >= 0
         ]
         bp_data = {'blueprint': {'entities': entities}}
         return bp_data
@@ -633,7 +637,7 @@ class BeltGrid:
             (x0, y0), (x1, y1) = get_splitter_input_positions(splitters_x[v], h2, 0)
             p = unblocked_input((x0, y0, 0), (x1, y1, 0))
             if p is None:
-                raise Exception(f'Ran out of space for inputs!')
+                return False
             self.set_input(*p)
         def unblocked_output(p0: tuple[int, int, int], p1: tuple[int, int, int]) -> tuple[int, int, int]:
             if self.can_set_output(*p0):
@@ -645,8 +649,9 @@ class BeltGrid:
             (x0, y0), (x1, y1) = get_splitter_output_positions(splitters_x[u], h2, 0)
             p = unblocked_output((x0, y0, 0), (x1, y1, 0))
             if p is None:
-                raise Exception(f'Ran out of space for outputs!')
+                return False
             self.set_output(*p)
+        return True
     def is_underground(self, x: int, y: int) -> bool:
         '''
         Return whether an underground belt starts or ends at `(x, y)`.

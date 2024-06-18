@@ -1,5 +1,6 @@
 
 from fischer.factoriobalancers import BeltGraph, BeltGrid
+from fischer.factoriobps import get_blueprint_string
 
 
 
@@ -40,9 +41,15 @@ def generate_bp() -> str:
     # Construct a grid from the graph
     grid = BeltGrid((6, 22), max_inputs=4, max_outputs=4, max_splitters=graph.num_internal_vertices, max_turtles=1)
     grid.generate_from_graph(graph, max_underground_length=8)
-
     print(grid)
 
+    # Construct the blueprint data from the grid.
+    bp_data = grid.to_blueprint_data()
+    # print(bp_data)
+
+    # Convert the blueprint data to a blueprint string.
+    bp_str = get_blueprint_string(bp_data)
+    print(bp_str)
 
 
 
