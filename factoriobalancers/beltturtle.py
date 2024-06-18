@@ -600,7 +600,7 @@ class BeltGrid:
         '''
         if splitter_positions is None:
             # Place splitters at spaced positions in a straight line.  This requires the grid to be sufficiently long but not necessarily wide.
-            # graph = graph.rearrange_vertices_by_dfs()
+            graph = graph.rearrange_vertices_by_dfs()
             splitter_positions = {}
             h2 = self.height // 2 - 1
             for n, v in enumerate(graph.internal_vertices()):
@@ -1015,14 +1015,14 @@ class BeltTurtle:
             if position_pair not in closed_set:
                 open_set.add(position_pair)
 
-        def debug_log():
-            os.system('cls')
-            print(self.grid)
-            print(f'turtle: {self.x, self.y, self.direction}\ntarget: {target_x, target_y, target_d}')
-            fs = list(sorted(open_set - closed_set, key=f_score.__getitem__))
-            print('f_score:\n' + '\n'.join(f'{p}: {f_score.get(p, np.inf):.2f} | {paths[p]}' for p in fs[:4]))
-            print(f'Possible steps: {list(self.possible_steps(max_underground_length=max_underground_length))}')
-            input()
+        # def debug_log():
+        #     os.system('cls')
+        #     print(self.grid)
+        #     print(f'turtle: {self.x, self.y, self.direction}\ntarget: {target_x, target_y, target_d}')
+        #     fs = list(sorted(open_set - closed_set, key=f_score.__getitem__))
+        #     print('f_score:\n' + '\n'.join(f'{p}: {f_score.get(p, np.inf):.2f} | {paths[p]}' for p in fs[:4]))
+        #     print(f'Possible steps: {list(self.possible_steps(max_underground_length=max_underground_length))}')
+        #     input()
 
         target_offset_x, target_offset_y = offset_position(target_x, target_y, (target_d + 2) % 4)
         target_splitter_index = self.grid.get_splitter_index_from_position(target_x, target_y) if self.grid.is_splitter(target_x, target_y) else -1
@@ -1064,7 +1064,6 @@ class BeltTurtle:
                     tentative_g_score = len(self.path)
                     if tentative_g_score < g_score.get((x, y, d, *p_to), np.inf):
                         record_scores((x, y, d), p_to, tentative_g_score)
-            if (target_x, target_y, target_d) == (13, 3, 0):
-                debug_log()
+            # debug_log()
 
         return False
