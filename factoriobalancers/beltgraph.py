@@ -79,6 +79,9 @@ class BeltGraph(Graph):
         s = self.summary
         return f'{s} [{in_str} -> {out_str}] [factor sum: {factor_sum}]'
     def internal_edges(self):
+        '''
+        Iterate over each edge `(u, v)` in this graph where `u` is not an input vertex and `v` is not an output vertex.
+        '''
         for u, v in self.edges():
             if self.is_input(u):
                 continue
@@ -193,6 +196,11 @@ class BeltGraph(Graph):
         Returns True when there is at least one input or at least one output.
         '''
         return self.num_inputs == 0 and self.num_outputs == 0
+    def is_internal_vertex(self, u: int) -> bool:
+        '''
+        Return False when vertex `u` is an input or output.  Return True otherwise.
+        '''
+        return not self.is_input(u) and not self.is_output(u)
     def copy_graph(self):
         graph = deepcopy(self)
         # graph.inputs = self.inputs[:]
@@ -627,6 +635,34 @@ class BeltGraph(Graph):
                 vmap[u] = max(v for v in vmap if v is not None) + 1
         # print(list(sorted(v for v in vmap if v is not None)))
         return self.rearrange_vertices(vmap)
+    def rearrange_vertices_by_dfs(self) -> 'BeltGraph':
+        '''
+        Use a depth-first search to rearrange the vertices.  For example, if A -> B and A -> C and B -> D, then the rearranged graph would have vertices in the order of A, B, D, C.
+        '''
+        vmap = [None] * (max(self.vertices()) + 1)
+        counter = 0
+        def dfs(u: int):
+            nonlocal counter
+            if vmap[u] is not None:
+                return
+            vmap[u] = counter
+            counter += 1
+            for v in self.out_vertices(u):
+                dfs(v)
+        for u in self.inputs:
+            dfs(u)
+        return self.rearrange_vertices(vmap)
+    def dfs(self):
+        visited = [False] * self.num_vertices
+        def dfs(u: int):
+            if visited[u]:
+                return
+            visited[u] = True
+            yield u
+            for v in self.out_vertices(u):
+                yield from dfs(v)
+        for u in self.inputs:
+            yield from dfs(u)
     def removable_vertices(self):
         for u in self.vertices():
             if self.is_identity(u):
