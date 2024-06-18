@@ -568,6 +568,48 @@ class BeltGrid:
         graph = BeltGraph()
         try_derive_graph(self.to_blueprint_data(), graph, verbose=self.debug_info)
         return graph
+    def load_bp_data(self, bp: dict) -> None:
+        '''
+        Load blueprint data.
+        '''
+        if 'blueprint' not in bp or 'entities' not in bp['blueprint']:
+            raise ValueError('Provided blueprint data is not valid.')
+
+        # Determine blueprint bounds
+        minx, miny, maxx, maxy = 0, 0, 0, 0
+        for entity in bp['blueprint']['entities']:
+            x, y = int(.5 + entity['position']['x']), int(.5 + entity['position']['y'])
+            minx = min(minx, x)
+            miny = min(miny, y)
+            maxx = max(maxx, x)
+            maxy = max(maxy, y)
+
+        # Load blueprint data
+        self.grid.fill(-1)
+        for entity in bp['blueprint']['entities']:
+            if 'direction' not in entity:
+                entity['direction'] = 0
+            d = (entity['direction'] // 2 - 1) % 4
+            x = entity['position']['x']
+            y = entity['position']['y']
+            if entity['name'] == 'express-splitter':
+                x, y = round(x - 1), round(y - .5)
+            else:
+                x, y = round(x - .5), round(y - .5)
+            _x = x - minx + (self.width - maxx + minx) // 2 + 1
+            _y = y - miny + (self.height - maxy + miny) // 2 + 1
+            if _x >= self.width:
+                raise ValueError(f'Provided blueprint is too wide for the grid.  Received blueprint dimensions w={maxx - minx + 1}, h={maxy - miny + 1}, but grid shape is ({self.height}, {self.width}).')
+            if _y >= self.height:
+                raise ValueError(f'Provided blueprint is too tall for the grid.  Received blueprint dimensions w={maxx - minx + 1}, h={maxy - miny + 1}, but grid shape is ({self.height}, {self.width}).')
+            if entity['name'] == 'express-transport-belt':
+                self.grid[_y, _x] = d
+            elif entity['name'] == 'express-underground-belt':
+                self.grid[_y, _x] = d + 4
+                if entity['type'] == 'output':
+                    self.underground_types[_y, _x] = True
+            elif entity['name'] == 'express-splitter':
+                self.set_splitter(_x, _y, d)
     def get_splitter_index_from_position(self, x: int, y: int) -> int:
         '''
         Return the index of a splitter, input, or output that occupies `(x, y)`.
