@@ -588,7 +588,7 @@ class BeltGrid:
             if sx == x and sy == y:
                 return i
         return -1
-    def generate_from_graph(self, graph: 'BeltGraph', max_underground_length: int = 8) -> bool:
+    def generate_from_graph(self, graph: 'BeltGraph', max_underground_length: int = 8, splitter_positions: dict[int, tuple[int, int, int]] = None) -> bool:
         '''
         Generate a belt grid from `graph`.  While it is guaranteed to work for a sufficiently large grid, it is never compact.
 
@@ -598,27 +598,30 @@ class BeltGrid:
 
         Return whether the generation was successful.
         '''
-        graph = graph.rearrange_vertices_by_dfs()
-        # Place splitters at spaced positions in a straight line.  This requires the grid to be sufficiently long but not necessarily wide.
-        h2 = self.height // 2 - 1
-        splitters_x = {}
-        for n, v in enumerate(filter(graph.is_internal_vertex, graph.dfs())):
-            x = 1 + 6 * n
-            self.set_splitter(x, h2, 0)
-            splitters_x[v] = x
+        if splitter_positions is None:
+            # Place splitters at spaced positions in a straight line.  This requires the grid to be sufficiently long but not necessarily wide.
+            # graph = graph.rearrange_vertices_by_dfs()
+            splitter_positions = {}
+            h2 = self.height // 2 - 1
+            for n, v in enumerate(graph.internal_vertices()):
+                x = 1 + 6 * n
+                self.set_splitter(x, h2, 0)
+                splitter_positions[v] = x, h2, 0
 
         # A-star from one splitter to the next.
         for u, v in graph.internal_edges():
             self.add_turtle(0, 0, 0, ignore=True, set_direction_immediately=False)
             paths = []
-            for x0, y0 in get_splitter_positions(splitters_x[u], h2, 0):
+            d0 = splitter_positions[u][2]
+            d1 = splitter_positions[v][2]
+            for x0, y0 in get_splitter_positions(*splitter_positions[u]):
                 if not self.is_splitter_connectable_forward(x0, y0):
                     continue
-                for x1, y1 in get_splitter_positions(splitters_x[v], h2, 0):
+                for x1, y1 in get_splitter_positions(*splitter_positions[v]):
                     if not self.is_splitter_connectable_backward(x1, y1):
                         continue
-                    self.turtles[-1].set_start_position(x0, y0, 0, clear_path_on_grid=True)
-                    if self.turtles[-1].astar(x1, y1, 0, max_underground_length=max_underground_length):
+                    self.turtles[-1].set_start_position(x0, y0, d0, clear_path_on_grid=True)
+                    if self.turtles[-1].astar(x1, y1, d1, max_underground_length=max_underground_length):
                         paths.append(self.turtles[-1].path.copy())
                 self.turtles[-1].reset(clear_path_on_grid=True)
             if not paths:
@@ -634,7 +637,7 @@ class BeltGrid:
                 return p1
         for u in graph.inputs:
             v, = graph.out_vertices(u)
-            (x0, y0), (x1, y1) = get_splitter_input_positions(splitters_x[v], h2, 0)
+            (x0, y0), (x1, y1) = get_splitter_input_positions(*splitter_positions[v])
             p = unblocked_input((x0, y0, 0), (x1, y1, 0))
             if p is None:
                 return False
@@ -646,7 +649,7 @@ class BeltGrid:
                 return p1
         for v in graph.outputs:
             u, = graph.in_vertices(v)
-            (x0, y0), (x1, y1) = get_splitter_output_positions(splitters_x[u], h2, 0)
+            (x0, y0), (x1, y1) = get_splitter_output_positions(*splitter_positions[u])
             p = unblocked_output((x0, y0, 0), (x1, y1, 0))
             if p is None:
                 return False
@@ -964,13 +967,24 @@ class BeltTurtle:
             if is_step_valid(new_x, new_y, new_d):
                 yield new_x, new_y, new_d
             if turn == 0 and self.grid.grid[self.y, self.x] < 4 and not self.grid.is_input(self.x, self.y):
-                for x, y in self.grid.underground_exits(self.x, self.y, self.direction, max_underground_length):
-                    d = self.direction
-                    if not is_step_valid(x, y, d, underground_exit=True):
-                        continue
-                    if self.grid.grid[y, x] >= 8 and self.grid.grid[y, x] - 8 == d:
+                # Check for underground belts.
+                cont = True
+                x, y = self.x, self.y
+                for _ in range(max_underground_length + 2):
+                    x, y = offset_position(x, y, self.direction)
+                    if not self.grid.is_within_bounds(x, y):
                         break
-                    yield x, y, d
+                    if self.grid.is_underground(x, y) and self.grid.grid[y, x] % 2 == self.direction % 2:
+                        cont = False
+                        break
+                if cont:
+                    for x, y in self.grid.underground_exits(self.x, self.y, self.direction, max_underground_length):
+                        d = self.direction
+                        if not is_step_valid(x, y, d, underground_exit=True):
+                            continue
+                        if self.grid.grid[y, x] >= 8 and self.grid.grid[y, x] - 8 == d:
+                            break
+                        yield x, y, d
     def astar(self, target_x: int, target_y: int, target_d: int, max_underground_length: int = 8) -> bool:
         # Use A-star search to guide the turtle to the target position and direction.
         # The heuristic is the Manhattan distance from the current position to the target position.
@@ -1001,14 +1015,14 @@ class BeltTurtle:
             if position_pair not in closed_set:
                 open_set.add(position_pair)
 
-        # def debug_log():
-        #     os.system('cls')
-        #     print(self.grid)
-        #     print(f'turtle: {self.x, self.y, self.direction}\ntarget: {target_x, target_y, target_d}')
-        #     fs = list(sorted(open_set - closed_set, key=f_score.__getitem__))
-        #     print('f_score:\n' + '\n'.join(f'{p}: {f_score.get(p, np.inf):.2f} | {paths[p]}' for p in fs[:4]))
-        #     print(f'Possible steps: {list(self.possible_steps(max_underground_length=max_underground_length))}')
-        #     input()
+        def debug_log():
+            os.system('cls')
+            print(self.grid)
+            print(f'turtle: {self.x, self.y, self.direction}\ntarget: {target_x, target_y, target_d}')
+            fs = list(sorted(open_set - closed_set, key=f_score.__getitem__))
+            print('f_score:\n' + '\n'.join(f'{p}: {f_score.get(p, np.inf):.2f} | {paths[p]}' for p in fs[:4]))
+            print(f'Possible steps: {list(self.possible_steps(max_underground_length=max_underground_length))}')
+            input()
 
         target_offset_x, target_offset_y = offset_position(target_x, target_y, (target_d + 2) % 4)
         target_splitter_index = self.grid.get_splitter_index_from_position(target_x, target_y) if self.grid.is_splitter(target_x, target_y) else -1
@@ -1025,6 +1039,7 @@ class BeltTurtle:
             closed_set.add(current)
             p_to, p_from = current[:3], current[3:]
             # print(f'current: {current}; p_to: {p_to}; p_from: {p_from}; turtle: {self.x, self.y, self.direction}')
+            wrong_splitter = False
             if p_from != p_to:
                 if p_from != self.position or p_to not in self.possible_steps(max_underground_length=max_underground_length):
                     # print(f'backtracking to {p_from}')
@@ -1039,13 +1054,17 @@ class BeltTurtle:
                         # debug_log()
                         return True
                 if self.position != self.start_position and self.grid.is_splitter(self.x, self.y):
-                    return self.grid.get_splitter_index_from_position(self.x, self.y) == target_splitter_index
+                    if self.grid.get_splitter_index_from_position(self.x, self.y) == target_splitter_index:
+                        return True
+                    wrong_splitter = True
             # debug_log()
-            for x, y, d in self.possible_steps(max_underground_length=max_underground_length):
-                # tentative_g_score = g_score[current] + 1
-                tentative_g_score = len(self.path)
-                if tentative_g_score < g_score.get((x, y, d, *p_to), np.inf):
-                    record_scores((x, y, d), p_to, tentative_g_score)
-            # debug_log()
+            if not wrong_splitter:
+                for x, y, d in self.possible_steps(max_underground_length=max_underground_length):
+                    # tentative_g_score = g_score[current] + 1
+                    tentative_g_score = len(self.path)
+                    if tentative_g_score < g_score.get((x, y, d, *p_to), np.inf):
+                        record_scores((x, y, d), p_to, tentative_g_score)
+            if (target_x, target_y, target_d) == (13, 3, 0):
+                debug_log()
 
         return False
