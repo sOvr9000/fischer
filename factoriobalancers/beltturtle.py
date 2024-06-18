@@ -674,11 +674,6 @@ class BeltGrid:
                     self.underground_types[y, x] = False
                 return True
         return False
-    def nudge_splitter(self, sx: int, sy: int, nudge_d: int) -> bool:
-        '''
-        Nudge a splitter at `(sx, sy)` in direction `nudge_d`.  Return whether the splitter had space for the nudge and its belts were able to be reconnected forward and backward automatically by A* pathfinding.
-        '''
-        raise NotImplementedError
     def get_splitter_index_from_position(self, x: int, y: int) -> int:
         '''
         Return the index of a splitter, input, or output that occupies `(x, y)`.
