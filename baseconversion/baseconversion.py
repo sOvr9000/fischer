@@ -99,7 +99,7 @@ def complex_base_to_decimal(base: Union[int, float, complex, str, mp.mpf, mp.mpc
     if prec is None:
         prec = max(24, int(len(digits) * abs(mp.log(base) / mp.log(2))) + 4)
     with mp.workprec(prec):
-        if isinstance(base, (int, float, complex, str)):
+        if isinstance(base, (int, float, complex, str, mp.mpf)):
             base = mp.mpc(base)
         x = mp.mpc(0, 0)
         inv_base = 1. / base
