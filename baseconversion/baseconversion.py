@@ -6,13 +6,31 @@ from itertools import product
 
 
 
-__all__ = ['base_to_decimal', 'decimal_to_base', 'complex_base_to_decimal', 'complex_decimal_to_base']
+__all__ = ['base_to_decimal', 'decimal_to_base', 'complex_base_to_decimal', 'complex_decimal_to_base', 'floor_complex', 'round_complex']
 
 
 
 def base_to_decimal(base: Union[int, float, str, mp.mpf], digits: Sequence[int], exponent: int) -> mp.mpf:
     '''
     Return the value of the given `digits` and `exponent` in base `base` converted back to decimal notation.
+
+    Parameters
+    ----------
+    - base: Union[int, float, str, mp.mpf]
+        The base of the number system used for the conversion. It can be an integer, float, string, or mp.mpf object.
+    - digits: Sequence[int]
+        A sequence of integers representing the digits of the number in the given base.
+    - exponent: int
+        The exponent of the number in the given base.
+
+    Returns
+    -------
+    - The decimal value of the number represented by the `digits` and `exponent` in base `base`.
+
+    Examples
+    --------
+    >>> base_to_decimal(2, [1, 0, 1], 2)
+    5.0
     '''
     prec = int(len(digits) * mp.log(base) / mp.log(2)) + 4
     with mp.workprec(prec):
@@ -30,7 +48,24 @@ def decimal_to_base(base: Union[int, float, str, mp.mpf], dec: Union[int, float,
     '''
     Return `digits` and `exponent` derived from converting the decimal number `dec` to base `base`.
 
-    If `pad = True`, then expand the length of the returned `digits` list to have a length of `max_digits` if it is shorter than that.
+    Parameters
+    ----------
+    - base: Union[int, float, str, mp.mpf]
+      - The base of the number system.
+    - dec: Union[int, float, str, mp.mpf]
+      - The decimal number to be converted.
+    - max_digits: int, optional
+      - The maximum number of digits in the converted number. Defaults to 64.
+    - pad: bool, optional
+      - Whether to pad the `digits` list with zeros if its length is less than `max_digits`. Defaults to False.
+
+    Returns
+    -------
+    - tuple[list[int], int]:
+        A tuple containing the list of digits and the exponent derived from converting `dec` to base `base`.
+
+    Examples
+    --------
     ```
     base = 2
     dec = 27
@@ -68,6 +103,30 @@ def decimal_to_base(base: Union[int, float, str, mp.mpf], dec: Union[int, float,
         return digits, exponent
 
 def round_complex(a: Union[float, mp.mpf, complex, mp.mpc], b: Optional[Union[float, mp.mpf]] = None, target_residuals: tuple[mp.mpc, mp.mpc] = None) -> Union[complex, tuple[int, int]]:
+    '''
+    Round the given complex number `a` to the nearest integer or complex number based on the provided `target_residuals`.
+
+    Parameters
+    ----------
+    - a: Union[float, mp.mpf, complex, mp.mpc]
+        The complex number to be rounded.
+    - b: Optional[Union[float, mp.mpf]]
+        The imaginary component of the complex number `a`. Only used if `a` is not a complex number.
+    - target_residuals: Optional[tuple[mp.mpc, mp.mpc]]
+        The target residuals used for rounding. If not provided, `a` and `b` will be rounded to the nearest integer or complex number.
+
+    Returns
+    -------
+    - Union[complex, tuple[int, int]]:
+        The rounded complex number or a tuple of rounded integers representing the real and imaginary components.
+
+    Examples
+    --------
+    >>> round_complex(3.7)
+    4+0j
+    >>> round_complex(3.2, 4.8)
+    (3, 5)
+    '''
     if target_residuals is None:
         if isinstance(a, (complex, mp.mpc)):
             return complex(int(a.real + .5), int(a.imag + .5))
@@ -87,6 +146,22 @@ def round_complex(a: Union[float, mp.mpf, complex, mp.mpc], b: Optional[Union[fl
 def floor_complex(a: Union[float, mp.mpf, complex, mp.mpc], b: Optional[Union[float, mp.mpf]] = None) -> Union[complex, tuple[int, int]]:
     '''
     Round the real and imaginary components toward zero.
+
+    Parameters
+    ----------
+        a (Union[float, mp.mpf, complex, mp.mpc]): The number whose real and imaginary components need to be rounded towards zero.
+        b (Optional[Union[float, mp.mpf]]): An optional parameter representing the second number that represents the imaginary component of `a` if `a` is not a complex number.
+
+    Returns
+    -------
+        Union[complex, tuple[int, int]]: The rounded number(s) with real and imaginary components rounded towards zero.
+
+    Examples
+    --------
+    >>> floor_complex(3.7+-.4j)
+    3-1j
+    >>> floor_complex(3.7, -.4)
+    (3, -1)
     '''
     if isinstance(a, (complex, mp.mpc)):
         return complex(int(a.real), int(a.imag))
