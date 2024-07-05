@@ -1,8 +1,9 @@
 
 from fischer.factoriobalancers import BeltGraph
+from fischer.factoriobps import get_blueprint_string
 from construct_m_n_alt import construct_m_n_alt
 import json
-from clipboard import paste
+from clipboard import paste, copy
 
 
 
@@ -23,6 +24,8 @@ def transpose_graph():
     print(graph.summary)
     print('Graph is solved:')
     print(graph.is_solved())
+
+    copy(get_blueprint_string(graph))
 
 
 

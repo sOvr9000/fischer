@@ -2,6 +2,7 @@
 import os
 import sys
 from fischer.factoriobalancers import BeltGraph, is_balancer_defined, add_balancer, BeltDesigner
+from multiprocessing import Pool
 
 
 
@@ -22,7 +23,7 @@ splitter2to2 = splitter2to2.rearrange_vertices_by_depth()
 
 
 
-def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
+def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str, m_split: int = None) -> BeltGraph:
     '''
     Algorithm:
 
@@ -39,8 +40,10 @@ def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
     
     Substitution of functionally equivalent groups of vertices:
     1. TODO
-    '''
 
+
+    If `m_split` is None, then `m_split` is set to `m // 2`.  This is used to construct two separate graphs `m_split`-n and `m - m_split`-n in order to construct the final graph for m-n.
+    '''
     def split_output(graph: BeltGraph, output: int, splitter: BeltGraph) -> None:
         u = graph.disconnect_output(output)
         (v,), outputs = graph.insert_graph(splitter)
@@ -76,7 +79,8 @@ def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
                 graph_composite.set_output(v, False)
 
     balancer_type = f'{m}-{n}'
-    if is_balancer_defined(balancer_type) and not (m == 5 and n == 9):
+    if is_balancer_defined(balancer_type):
+        # print(f'Loaded balancer {balancer_type}')
         return BeltGraph.from_common_balancers(balancer_type)
 
     graph = BeltGraph()
@@ -132,12 +136,22 @@ def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
                     continue
                 splitter = construct_m_n_alt2(1, num, action_stacks_txt)
                 split_output(graph, u, splitter)
+            
+            # print(f'Constructed 1-{n} from action stack {line}')
     else:
-        j = m // 2
+        if m_split is None:
+            m_split = m // 2
+        j = m_split
         k = m - j
         graph_j = construct_m_n_alt2(j, n, action_stacks_txt)
         graph_k = construct_m_n_alt2(k, n, action_stacks_txt)
-        # print(f'j={j}, k={k}, n={n}')
+        if graph_j is None:
+            print(f'Could not construct subgraph {j}-{n} (j={j})')
+            return
+        if graph_k is None:
+            print(f'Could not construct subgraph {k}-{n} (k={k})')
+            return
+        # print(f'j={j}, k={k}, m={m}, n={n}')
         # print(f'Graph j:\n{graph_j}')
         # print(graph_j.evaluate())
         # print(f'Graph k:\n{graph_k}')
@@ -164,7 +178,7 @@ def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
         # print(graph_composite)
         # input()
 
-        def dfs(g: BeltGraph, d: int = 1, v0i: int = 0, v1i: int = 1) -> BeltGraph:
+        def dfs(g: BeltGraph, d: int, v0i: int, v1i: int) -> BeltGraph:
             # Search first along v1i, then along v0i, and then along d.
             # At the end of each branch (where d exceeds the number of lists in `vertices`), the current graph is evaluated and returned only if it is solved.
             # os.system('cls')
@@ -177,38 +191,84 @@ def construct_m_n_alt2(m: int, n: int, action_stacks_txt: str) -> BeltGraph:
                 if g.is_solved():
                     return g
                 return
+
             # The two bounds below are extremely important for reducing the search space exponentially.  We search v0 between 0 and len(vertices[d])//2, and v1 between len(vertices[d])//2+1 and len(vertices[d]).
+            # if v0i >= len(vertices[d]) // 2:
+            #     return dfs(g, d=d+1, v0i=0, v1i=len(vertices[d])//2+1)
+            # if v1i >= len(vertices[d]):
+            #     return dfs(g, d=d, v0i=v0i+1, v1i=len(vertices[d])//2+1)
+            # This version of the check allows v0 to start from the same position in v0's interval as v1 in v1's interval.  This is where substitutions are more likely to be correct, especially if j == k.
             if v0i >= len(vertices[d]) // 2:
-                return dfs(g, d=d+1, v0i=0, v1i=len(vertices[d])//2+1)
+                return dfs(g, d=d+1, v0i=0, v1i=len(vertices[d])//2)
+            if (v0i == 0 and v1i >= len(vertices[d])) or (v0i > 0 and v1i == len(vertices[d])//2+v0i-1):
+                return dfs(g, d=d, v0i=v0i+1, v1i=len(vertices[d])//2+v0i+1)
             if v1i >= len(vertices[d]):
-                return dfs(g, d=d, v0i=v0i+1, v1i=len(vertices[d])//2+1)
-            
-            # Start v0 from the same position in v0's interval as v1 in v1's interval.  These vertex pairs are more likely to be functionally equivalent, especially when j == k.
-            # TODO
+                return dfs(g, d=d, v0i=v0i, v1i=len(vertices[d])//2)
 
             # Also check for substitutions that likely make use of feedback loops when necessary.  For example, if a vertex in graph_j does not precede a feedback loop, then it is likely that the correct corresponding vertex to be substituted in graph_k does not precede a feedback loop.
+            # TODO
 
             v0 = vertices[d][v0i]
             v1 = vertices[d][v1i]
-            if not g.has_vertex(v0) or not g.has_vertex(v1) or g.out_degree(v0) != 2 or g.out_degree(v1) != 2 or g.in_degree(v0) != 1 or g.in_degree(v1)  != 1 or (v0 in V_j) != (v1 in V_k) or g.has_edge(g.in_vertices(v0)[0], v1):
+            if not g.has_vertex(v0) or not g.has_vertex(v1) or g.out_degree(v0) != 2 or g.out_degree(v1) != 2 or g.in_degree(v0) != 1 or g.in_degree(v1)  != 1 or (v0 in V_j) != (v1 in V_k):
                 # These parameters do not match substitution conditions.  Skip onto the next set of parameters.
+                # TODO Also check if the resulting graph after substitution is one that's already been searched.  If so, skip onto the next set of parameters.  This should be accomplished by storing the connected vertex pairs as a sorted tuple in a set, making it so that it's less likely that any two searched graphs are not isomorphic.
                 return dfs(g, d=d, v0i=v0i, v1i=v1i+1)
             # Now check substitution.  This is where the branches split because the substitution may not be correct.
-            _g = g.copy_graph()
-            substitute(_g, v0, v1)
-            solved_g = dfs(_g, d=d, v0i=v0i, v1i=v1i+1)
-            if solved_g is not None:
-                return solved_g
+            _g = None
+            if not g.has_edge(g.in_vertices(v0)[0], v1):
+                _g = g.copy_graph()
+                substitute(_g, v0, v1)
+                # if _g is not None:
+                #     solved_g = dfs(_g, d=d, v0i=v0i, v1i=v1i+1)
+                #     if solved_g is not None:
+                #         return solved_g
+            elif not g.has_edge(g.in_vertices(v1)[0], v0):
+                _g = g.copy_graph()
+                substitute(_g, v1, v0)
+                # if _g is not None:
+                #     solved_g = dfs(_g, d=d, v0i=v0i, v1i=v1i+1)
+                #     if solved_g is not None:
+                #         return solved_g
+            if _g is not None:
+                solved_g = dfs(_g, d=d, v0i=v0i, v1i=v1i+1)
+                if solved_g is not None:
+                    return solved_g
             # No branches preceding this current part of the search have succeeded.  Try again without substitution between v0 and v1.
             return dfs(g, d=d, v0i=v0i, v1i=v1i+1)
 
-        graph = dfs(graph_composite)
+        graph = dfs(graph_composite, d=1, v0i=0, v1i=len(vertices[1])//2)
         if graph is None:
-            raise ValueError('No substitution found')
+            return
         graph = graph.rearrange_vertices_by_depth()
     if not graph.is_solved():
         raise ValueError('Graph is not solved')
     add_balancer(balancer_type, graph.compact_string)
+    return graph
+
+
+
+def construct_m_n_alt2_mp(m: int, n: int, action_stacks_txt: str, workers: int = 8) -> BeltGraph:
+    '''
+    Use multiprocessing to try to construct the graph for m-n using different splits of m.
+    '''
+    # Async map, returning the first successful graph.
+    with Pool(workers) as p:
+        results = p.starmap_async(construct_m_n_alt2, [(m, n, action_stacks_txt, m_split) for m_split in range(1, m)])
+        for graph in results.get():
+            if graph is not None:
+                return graph
+
+def construct_m_n_alt2_mp_precendent(m: int, n: int, action_stacks_txt: str, workers: int = 8) -> BeltGraph:
+    '''
+    Try to construct all graphs k-n where `1 <= k <= m`, and save whicher graphs are solved.  Return the graph for m-n if it is solved.
+    '''
+    for _m in range(1, m+1):
+        graph = construct_m_n_alt2_mp(_m, n, action_stacks_txt, workers=workers)
+        if graph is not None:
+            print(f'Solved {graph.advanced_summary}')
+        else:
+            print(f'Failed {_m}-{n}')
     return graph
 
 
@@ -224,9 +284,21 @@ def main():
     #         print(graph.advanced_summary)
     #         print(graph.evaluate())
     #         input()
-    graph = construct_m_n_alt2(5, 9, action_stacks_txt)
+    graph = construct_m_n_alt2(2, 37, action_stacks_txt, m_split=3)
+    if graph is None:
+        print('No graph solution found')
+        return
     print(graph.advanced_summary)
     print(graph.evaluate())
+
+    # from fischer.factoriobalancers import BeltGrid
+    # from fischer.factoriobps import get_blueprint_string
+    # grid = BeltGrid(size=(13, graph.num_internal_vertices * 6 - 2), max_inputs=graph.num_inputs, max_outputs=graph.num_outputs, max_splitters=graph.num_internal_vertices, max_turtles=1)
+    # if grid.generate_from_graph(graph):
+    #     print(grid)
+    #     print(get_blueprint_string(grid.to_blueprint_data()))
+    # else:
+    #     print('No grid solution found')
 
 
 
